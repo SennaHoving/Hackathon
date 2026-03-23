@@ -1,0 +1,64 @@
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background-color: #121212;
+  color: white;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+/* hier komt de navbar sectie */
+header {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #1f1f1f;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 20px 0;
+}
+header nav ul {
+  display: flex;
+  align-items: center;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+header nav ul li {
+  margin: 0 15px;
+}
+
+header nav ul li a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.5s ease;
+  position: relative;
+}
+
+header nav ul li a:hover {
+  color: white;
+}
+
+header nav ul li a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -5px;
+  left: 0;
+  background-color: white;
+
+  transition: width 0.2s ease-in-out;
+}
+
+header nav ul li a:hover::after {
+  width: 100%;
+}
