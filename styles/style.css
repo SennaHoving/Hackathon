@@ -3,3 +3,26 @@
     padding: 0;
 }
 
+section {
+    height: 100vh;
+} 
+
+#module {
+    position: relative;
+    display: grid; 
+    align-items: center; 
+}
+
+#module div {
+    display: flex;
+    flex-direction: row; 
+    justify-content: center;
+    align-items: center; 
+    height: 50vh; 
+
+    p {
+        position: fixed; 
+        top: 50vh; 
+        left: 20vw; 
+    }
+}
