@@ -16,11 +16,12 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #1f1f1f;
-  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.5); /* 50% transparant */
   -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   padding: 20px 0;
 }
+
 header nav ul {
   display: flex;
   align-items: center;
@@ -61,4 +62,9 @@ header nav ul li a::after {
 
 header nav ul li a:hover::after {
   width: 100%;
+}
+
+body {
+  /* De bron van je afbeelding */
+  background-image: url("/img/spacebackground.png");
 }
