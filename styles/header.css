@@ -9,14 +9,13 @@ body {
   padding: 20px;
 }
 
-/* hier komt de navbar sectie */
 header {
   z-index: 1000;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* 50% transparant */
+  background-color: rgba(0, 0, 0, 0.2);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   padding: 20px 0;
@@ -45,7 +44,7 @@ header nav ul li a {
 }
 
 header nav ul li a:hover {
-  color: white;
+  color: #eb5d34;
 }
 
 header nav ul li a::after {
@@ -55,8 +54,7 @@ header nav ul li a::after {
   height: 1px;
   bottom: -5px;
   left: 0;
-  background-color: white;
-
+  background-color: #eb5d34;
   transition: width 0.2s ease-in-out;
 }
 
@@ -65,6 +63,60 @@ header nav ul li a:hover::after {
 }
 
 body {
-  /* De bron van je afbeelding */
   background-image: url("/img/spacebackground.png");
+}
+
+#hamburger {
+  display: none;
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  #hamburger {
+    display: block;
+  }
+  nav ul {
+    display: none;
+    flex-direction: column;
+  }
+  nav ul.active {
+    display: flex;
+  }
+}
+
+@media (max-width: 768px) {
+  header nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 250px;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    padding: 20px 40px;
+
+    opacity: 0;
+    transform: translateX(-100%);
+    transition:
+      transform 0.5s ease,
+      opacity 0.5s ease;
+    z-index: 999;
+  }
+
+  header nav ul.active {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  #hamburger {
+    display: block;
+    padding-left: 20px;
+  }
+
+  header nav ul li {
+    margin: 15px 0;
+    text-align: center;
+  }
+  header nav ul li a {
+    font-size: 24px;
+  }
 }
