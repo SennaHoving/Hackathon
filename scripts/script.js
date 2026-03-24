@@ -25,13 +25,13 @@ document.querySelectorAll('.astronaut').forEach(function(img) {
 });
 
 function sluitPopup() {
-  document.getElementById('popup').classList.add('verborgen');
+  document.getElementById("popup").classList.add("verborgen");
 }
 
-document.getElementById('popup-sluit').addEventListener('click', sluitPopup);
+document.getElementById("popup-sluit").addEventListener("click", sluitPopup);
 
-document.addEventListener('click', function(e) {
-  if (!e.target.closest('.astronaut') && !e.target.closest('#popup')) {
+document.addEventListener("click", function (e) {
+  if (!e.target.closest(".astronaut") && !e.target.closest("#popup")) {
     sluitPopup();
   }
 });
