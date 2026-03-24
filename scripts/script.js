@@ -26,15 +26,3 @@ document.addEventListener('click', function(e) {
     sluitPopup();
   }
 });
-
-/* 
-Zet automatisch elke letter van de H1 in een span met variabele --i */
-document.querySelectorAll('.morph-text').forEach(el => {
-  el.innerHTML = el.textContent
-    .split('')
-    .map((char, i) =>
-      `<span style="--i:${i}">${char === ' ' ? '&nbsp;' : char}</span>`
-    )
-    .join('');
-});
-
