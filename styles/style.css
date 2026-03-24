@@ -45,94 +45,12 @@ h2:nth-last-of-type(2){
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-/* styling van fase 1 */
-
-/* animation earth */
 body {
-  min-height: 100vh;
-  overflow: hidden;
-  background: url("../img/spacebackground.png") center / cover no-repeat;
-  color: white;
-  font-family: sans-serif;
+  background-color: black;
+  background-image: url("/img/spacebackground.png");
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
-
-.astronaut-layer {
-  position: fixed;
-  inset: 0;
-  z-index: 5;
-}
-
-.astronaut {
-  position: fixed;
-  width: clamp(34px, 14vw, 64px); /* mobile first */
-  opacity: 0.95;
-  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.45));
-  will-change: transform;
-  animation: floatOrbit 10s ease-in-out infinite alternate;
-}
-
-
-.popup {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-color: white;
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-  z-index: 100;
-  width: 50%;
-}
-
-.popup-inhoud {
-  display: flex;
-  padding-top: 1rem;
-  gap: 2    rem;
-  line-height: 1.8em;
-}
-
-.popup-inhoud img {
-  width: 120px;
-  object-fit: cover;
-}
-
-.verborgen {
-  display: none;
-}
-
-/* Mobile positions + alleen timing per item */
-.astronaut:nth-child(1) { left: 4vw;  top: 20vh; animation-duration: 8.5s;  animation-delay: -1s; }
-.astronaut:nth-child(2) { left: 70vw; top: 18vh; animation-duration: 9.5s;  animation-delay: -3s; }
-.astronaut:nth-child(3) { left: 8vw;  top: 52vh; animation-duration: 10s;   animation-delay: -5s; }
-.astronaut:nth-child(4) { left: 74vw; top: 50vh; animation-duration: 11s;   animation-delay: -2s; }
-.astronaut:nth-child(5) { left: 30vw; top: 34vh; animation-duration: 9s;    animation-delay: -4s; }
-.astronaut:nth-child(6) { left: 56vw; top: 72vh; animation-duration: 11.5s; animation-delay: -6s; }
-
-@keyframes floatOrbit {
-  from {
-    transform: translate(0, 0) rotate(-8deg) scale(0.96);
-  }
-  to {
-    transform: translate(100px, -36px) rotate(720deg) scale(2);
-  }
-}
-
-/* Tablet/Desktop */
-@media (min-width: 768px) {
-  .astronaut {
-    width: clamp(52px, 7vw, 110px);
-  }
-}
-
-/* Respect user setting */
-@media (prefers-reduced-motion: reduce) {
-  .astronaut {
-    animation: none;
-  }
-}
-
-
-
