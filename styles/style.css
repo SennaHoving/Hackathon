@@ -40,12 +40,13 @@
 @font-face {
     font-family: 'Quicksand';
     src: url('/fonts/Quicksand-Medium.ttf') format('truetype');
-
-}
+    
+  }  
 
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 
@@ -77,6 +78,14 @@ p {
 
 
 
+
+
+body {
+  background-color: black;
+  background-image: url("/img/spacebackground.png");
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
 * {
     margin: 0;
     padding: 0;
