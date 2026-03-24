@@ -1,12 +1,11 @@
 html {
   scroll-behavior: smooth;
 }
-body {
-  background-color: #121212;
-  color: white;
-  font-family: sans-serif;
+
+* {
+  padding: 0;
   margin: 0;
-  padding: 20px;
+  font-family: sans-serif;
 }
 
 header {
@@ -15,9 +14,7 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.6);
   padding: 20px 0;
 }
 
@@ -62,10 +59,6 @@ header nav ul li a:hover::after {
   width: 100%;
 }
 
-body {
-  background-image: url("/img/spacebackground.png");
-}
-
 #hamburger {
   display: none;
   cursor: pointer;
@@ -93,6 +86,7 @@ body {
     top: 70px;
     left: 0;
     padding: 20px 40px;
+    background-color: #eb5d34;
 
     opacity: 0;
     transform: translateX(-100%);

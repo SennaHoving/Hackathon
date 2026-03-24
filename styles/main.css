@@ -1,0 +1,116 @@
+/* Vervang je huidige .phase-1 en .earth-container */
+
+main {
+  background-color: black;
+  background-image: url("/img/spacebackground.png");
+  background-size: cover;
+  background-position: center;
+}
+.phase-1 {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.text-p1 {
+  position: absolute;
+  z-index: 2;
+  margin-top: 60px;
+  border-radius: 20px;
+  padding: 30px;
+  background: rgba(15, 15, 25, 0.4);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 8px 32px 0 rgba(0, 0, 0, 0.8),
+    inset 0 0 10px rgba(100, 150, 255, 0.1);
+  color: #e0e0e0;
+  /* line-height: 1.6; */
+}
+
+h1 {
+  font-size: 54px;
+  margin-bottom: 10px;
+}
+
+.text-p1 p {
+  line-height: 1.6;
+}
+
+.earth-container {
+  position: absolute;
+  bottom: -80px;
+  z-index: 1;
+}
+
+.earth-container img {
+  display: block;
+  transform: rotate(-10deg);
+  height: auto;
+  pointer-events: none;
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+@media (max-width: 768px) {
+  .text-p1 {
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    text-align: center;
+  }
+
+  .earth-container {
+    bottom: -15%;
+    left: -50%;
+    transform: none;
+  }
+
+  .earth-container img {
+    width: 600px;
+  }
+}
+
+/* ===========================
+   DESKTOP
+=========================== */
+@media (min-width: 769px) {
+  .phase-1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .text-p1 {
+    position: relative;
+    top: 600px;
+    left: auto;
+    transform: none;
+    width: 35%;
+    z-index: 2;
+    margin-bottom: 40px;
+  }
+
+  .earth-container {
+    position: relative; /* NIET meer absolute */
+    top: 60%;
+    left: auto;
+    z-index: 1;
+  }
+
+  .earth-container img {
+    width: 1600px;
+  }
+}
+
+/* ===========================
+   Pulse design
+=========================== */
