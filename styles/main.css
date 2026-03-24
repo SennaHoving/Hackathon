@@ -114,3 +114,28 @@ h1 {
 /* ===========================
    Pulse design
 =========================== */
+
+footer::after {
+  content: "";
+  height: 100%;
+  width: 100px;
+  background-image: url("/assets/rocket.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  right: 0;
+  top: 0;
+  position: fixed;
+  z-index: 9999;
+  animation: rocketScroll linear;
+  animation-timeline: view();
+}
+
+@keyframes rocketScroll {
+  from {
+    background-position: right 100%;
+  }
+  to {
+    background-position: right 0%;
+  }
+}
