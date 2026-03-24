@@ -15,6 +15,15 @@ const height = window.innerHeight;
 const scene = new THREE.Scene()
 // scene.background = new THREE.Color('#009398')
 
+// Light
+const Light = new THREE.DirectionalLight(0xffffff, 5);
+Light.position.set(10, 10, 10);
+scene.add(Light);
+
+const Light2 = new THREE.DirectionalLight(0xffffff, 5);
+Light2.position.set(-10, -10, -10);
+scene.add(Light2);
+
 // Camera 
 const fov = 25; 
 const aspect = width / height;
@@ -22,15 +31,17 @@ const near = 0.1;
 const far = 100; 
 
 const camera = new THREE.PerspectiveCamera(fov, aspect, near, far); 
-camera.position.set(0, 0, 10); 
-// TEst
+camera.position.set(0, 0, 11); 
+
 // 3D Shape 
 const loader = new GLTFLoader(); 
-loader.load( "../ass/cube.glb", function (gltf) {
+loader.load( "../ass/module.glb", function (gltf) {
     const cube = gltf.scene
 
     cube.traverse((child) => {
-        child.material = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: false });
+        if (child.isMesh) {
+            child.material.needsUpdate = true;
+        }
     });
     
     console.log( cube )
@@ -75,7 +86,7 @@ function moveCameraTo(newPosition) {
 
 // Click 
 document.querySelector("button").addEventListener("click", () => {
-    const targetPos = new THREE.Vector3(0, 0, 10);
+    const targetPos = new THREE.Vector3(0, 0, 11);
     moveCameraTo(targetPos);
 })
 
