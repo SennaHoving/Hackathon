@@ -1,5 +1,44 @@
+:root {
+  
+    --font-family1: 'galactic';
+    --font-family2: 'Deltha';
+    --font-para: 'Quicksand';
+
+    --h1-font-size:clamp(1.875rem, -1.875rem + 10vw, 3.75rem);
+}
+
+  @font-face {
+    font-family: 'galactic';
+    src: url('/fonts/Everyday\ Galactic\ Alphabet.otf') format('truetype');
+    
+  }
+
+  @font-face {
+    font-family: 'Deltha';
+    src: url('/fonts/Deltha.ttf') format('truetype');
+    
+  }
+
+  @font-face {
+    font-family: 'Quicksand';
+    src: url('/fonts/Quicksand-Medium.ttf') format('truetype');
+    
+  }  
+
+
+
 *{
     margin: 0;
     padding: 0;
+}
+
+
+h2 {
+    font-size: var(--h1-font-size);
+    font-family: var(--font-family1);
+}
+
+h2:nth-last-of-type(2){
+    font-family: var(--font-family2);
 }
 
