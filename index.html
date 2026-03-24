@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="styles/main.css" />
 
     <script type="importmap">
-      {"imports": {
+      {
+        "imports": {
           "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js",
           "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/"
         }
@@ -83,55 +84,53 @@
               <img src="img/earth.png" alt="black hole" />
             </div>
           </div>
-
-    
-      </section>
-      <!-- hier komt informatie text -->
-      <section class="mission">
-        <div class="text-mission">
-          <h5>01 <span></span> dolor sit amet</h5>
-          <h4>Lorem ipsum dolor sit amet</h4>
-          <span class="line"></span>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-            eiusmod tempor incididunt ut labore et dolore magna Lorem ipsum
-            dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-            incididunt ut labore et dolore magna Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
-            labore et dolore magna
-          </p>
-        </div>
-        <img src="img/earth.png" alt="earth" />
-      </section>
-      <section class="extra-info">
-        <ul>
-          <li>
-            <span>Optinal subtext</span>
-            <h6>test</h6>
+        </section>
+        <!-- hier komt informatie text -->
+        <section class="mission">
+          <div class="text-mission">
+            <h5>01 <span></span> dolor sit amet</h5>
+            <h4>Lorem ipsum dolor sit amet</h4>
+            <span class="line"></span>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt
+              eiusmod tempor incididunt ut labore et dolore magna Lorem ipsum
+              dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+              incididunt ut labore et dolore magna Lorem ipsum dolor sit amet,
+              consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+              labore et dolore magna
             </p>
-          </li>
-          <li>
-            <span>Optinal subtext</span>
-            <h6>test</h6>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt
-            </p>
-          </li>
-          <li>
-            <span>Optinal subtext</span>
-            <h6>test</h6>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt
-            </p>
-          </li>
-        </ul>
-      </section>
-      <!-- phase 2 -->
+          </div>
+          <img src="img/earth.png" alt="earth" />
+        </section>
+        <section class="extra-info">
+          <ul>
+            <li>
+              <span>Optinal subtext</span>
+              <h6>test</h6>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                eiusmod tempor incididunt
+              </p>
+            </li>
+            <li>
+              <span>Optinal subtext</span>
+              <h6>test</h6>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                eiusmod tempor incididunt
+              </p>
+            </li>
+            <li>
+              <span>Optinal subtext</span>
+              <h6>test</h6>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                eiusmod tempor incididunt
+              </p>
+            </li>
+          </ul>
+        </section>
+        <!-- phase 2 -->
         <!-- phase 2 -->
         <!------- MARK: begin astronaut
           -->
@@ -178,8 +177,7 @@ Mijn achtergrond ligt in de astrofysica (PhD aan Leiden Observatory), waar ik vi
 
 Mijn onderzoek richt zich op röntgenspectroscopie van het hete plasma tussen deze sterrenstelsels. Daarmee bestudeer ik hoe elementen zoals zuurstof, silicium en ijzer ontstaan, zich verspreiden en het intergalactische medium verrijken — belangrijke bouwstenen voor planeten en leven.
 
-Daarnaast ben ik sinds 2024 principal investigator van de Nederlandse bijdrage aan de ESA-missie NewAthena, waarbij ik wetenschappelijke en technologische ontwikkelingen voor toekomstige röntgenastronomie samenbreng.
-"
+Daarnaast ben ik sinds 2024 principal investigator van de Nederlandse bijdrage aan de ESA-missie NewAthena, waarbij ik wetenschappelijke en technologische ontwikkelingen voor toekomstige röntgenastronomie samenbreng."
             data-img="sronimg/Aurora-Simionescu.png"
           />
           <img
@@ -399,8 +397,12 @@ Verder draag ik bij aan de Europese CO2M-missie door delen van een geavanceerde 
         </section>
 
         <section id="module">
-          <button>Button</button>
-          <button id="comp1">component 1</button>
+          <div id="three-root"></div>
+
+          <div class="module-controls">
+            <button>Button</button>
+            <button id="comp1">component 1</button>
+          </div>
         </section>
         <!------- MARK: eind astronaut
           -->

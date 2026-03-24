@@ -1,100 +1,93 @@
 /* imports */ 
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
-const moduleContainer = document.getElementById("module"); 
+// Gebruik #three-root als die bestaat, anders fallback naar #module
+const mount = document.getElementById("three-root") || document.getElementById("module");
+if (!mount) throw new Error("Geen #three-root of #module gevonden.");
+
 let cameraTargetPos = null;
-
-const width = window.innerWidth;
-const height = window.innerHeight;
 
 // Scene
 const scene = new THREE.Scene();
 
-// Light
-const Light = new THREE.DirectionalLight(0xffffff, 5);
-Light.position.set(10, 10, 10);
-scene.add(Light);
+// Licht
+scene.add(new THREE.AmbientLight(0xffffff, 1.2));
 
-const Light2 = new THREE.DirectionalLight(0xffffff, 5);
-Light2.position.set(-10, -10, -10);
-scene.add(Light2);
+const light1 = new THREE.DirectionalLight(0xffffff, 2.5);
+light1.position.set(10, 10, 10);
+scene.add(light1);
 
-// Camera 
-const fov = 25; 
-const aspect = width / height;
-const near = 0.1; 
-const far = 100; 
+const light2 = new THREE.DirectionalLight(0xffffff, 2);
+light2.position.set(-10, -10, -10);
+scene.add(light2);
 
-const camera = new THREE.PerspectiveCamera(fov, aspect, near, far); 
-camera.position.set(0, 0, 11); 
+// Camera
+const camera = new THREE.PerspectiveCamera(25, 1, 0.1, 100);
+camera.position.set(0, 0, 11);
 
-// 3D Shape 
-// const loader = new GLTFLoader(); 
-// loader.load( "../assets/module.glb", function (gltf) {
-//     const cube = gltf.scene
-
-//     cube.traverse((child) => {
-//         if (child.isMesh) {
-//             child.material.needsUpdate = true;
-//         }
-//     });
-    
-//     console.log( cube )
-//     scene.add( cube ); 
-// });
-
-// Render
+// Renderer
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-renderer.setSize(width, height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+mount.appendChild(renderer.domElement);
 
-moduleContainer.append(renderer.domElement); 
-// renderer.render(scene, camera); 
+// Controls
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.enableZoom = false;
 
-const controls = new OrbitControls(camera, renderer.domElement); 
-controls.enableDamping = true; 
-controls.enableZoom = false; 
+// Model
+const loader = new GLTFLoader();
+loader.load(
+  "../assets/module.glb",
+  (gltf) => {
+    const model = gltf.scene;
+    model.traverse((child) => {
+      if (child.isMesh && child.material) child.material.needsUpdate = true;
+    });
+    scene.add(model);
+  },
+  undefined,
+  (err) => console.error("GLB load error:", err)
+);
+
+function resizeRenderer() {
+  const w = mount.clientWidth || window.innerWidth;
+  const h = mount.clientHeight || 420; // fallback hoogte
+  renderer.setSize(w, h, false);
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+}
+
+function moveCameraTo(newPosition) {
+  cameraTargetPos = newPosition.clone();
+}
 
 function animate() {
-    requestAnimationFrame(animate);
-    controls.update();
+  requestAnimationFrame(animate);
+  controls.update();
 
-    if (cameraTargetPos) {
-        // move camera position
-        camera.position.lerp(cameraTargetPos, 0.05);
-
-        // If close enough, stop moving
-        if (camera.position.distanceTo(cameraTargetPos) < 0.01) {
-            camera.position.copy(cameraTargetPos);
-            cameraTargetPos = null;
-        }
+  if (cameraTargetPos) {
+    camera.position.lerp(cameraTargetPos, 0.05);
+    if (camera.position.distanceTo(cameraTargetPos) < 0.01) {
+      camera.position.copy(cameraTargetPos);
+      cameraTargetPos = null;
     }
+  }
 
   renderer.render(scene, camera);
 }
 
+// Buttons binnen #module
+const moduleSection = document.getElementById("module");
+const firstBtn = moduleSection?.querySelector("button");
+const comp1Btn = document.getElementById("comp1");
+
+firstBtn?.addEventListener("click", () => moveCameraTo(new THREE.Vector3(0, 0, 11)));
+comp1Btn?.addEventListener("click", () => moveCameraTo(new THREE.Vector3(5, 5, 5)));
+
+window.addEventListener("resize", resizeRenderer);
+
+resizeRenderer();
 animate();
-
-function moveCameraTo(newPosition) {
-    cameraTargetPos = newPosition.clone(); 
-}
-
-// Click 
-document.querySelector("button").addEventListener("click", () => {
-    const targetPos = new THREE.Vector3(0, 0, 11);
-    moveCameraTo(targetPos);
-})
-
-document.getElementById("comp1").addEventListener("click", () => {
-    const targetPos = new THREE.Vector3(5, 5, 5);
-    moveCameraTo(targetPos);
-})
-
-// Responsive resize
-window.addEventListener("resize", () => {
-  camera.aspect = width / height;
-  camera.updateProjectionMatrix();
-  renderer.setSize(width, height);
-});
