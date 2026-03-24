@@ -11,13 +11,14 @@ section {
 section:nth-of-type(2) {
     position: relative; 
 
-    div {
+    button {
         position: absolute; 
         top: 1em; 
         left: 1em;
-
-        p {
-            color: white; 
-        }
+        padding: 0.5em 1em; 
+        border-radius: 999px; 
+        background-color: rgb(255, 255, 255); 
+        color: black; 
+        border: none; 
     }
 }   
