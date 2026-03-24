@@ -26,3 +26,5 @@ document.addEventListener('click', function(e) {
     sluitPopup();
   }
 });
+
+
