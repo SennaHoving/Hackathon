@@ -45,11 +45,10 @@
     
   }  
 
-
-
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 
@@ -87,11 +86,7 @@ h2:nth-last-of-type(2){
     font-family: var(--font-family2);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+
 
 body {
   background-color: black;
