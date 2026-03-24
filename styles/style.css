@@ -1,57 +1,46 @@
 :root {
-  --font-family1: "galactic";
-  --font-family2: "Deltha";
-  --font-para: "Quicksand";
+  
+    --font-family1: 'galactic';
+    --font-family2: 'Deltha';
+    --font-para: 'Quicksand';
 
-  --h1-font-size: clamp(1.875rem, -1.875rem + 10vw, 3.75rem);
+    --h1-font-size:clamp(1.875rem, -1.875rem + 10vw, 3.75rem);
 }
 
-@font-face {
-  font-family: "galactic";
-  src: url("/fonts/Everyday\ Galactic\ Alphabet.otf") format("truetype");
+  @font-face {
+    font-family: 'galactic';
+    src: url('/fonts/Everyday\ Galactic\ Alphabet.otf') format('truetype');
+    
+  }
+
+  @font-face {
+    font-family: 'Deltha';
+    src: url('/fonts/Deltha.ttf') format('truetype');
+    
+  }
+
+  @font-face {
+    font-family: 'Quicksand';
+    src: url('/fonts/Quicksand-Medium.ttf') format('truetype');
+    
+  }  
+
+
+
+*{
+    margin: 0;
+    padding: 0;
 }
 
-@font-face {
-  font-family: "Deltha";
-  src: url("/fonts/Deltha.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Quicksand";
-  src: url("/fonts/Quicksand-Medium.ttf") format("truetype");
-}
-
-* {
-  margin: 0;
-  padding: 0;
-}
 
 h2 {
-  font-size: var(--h1-font-size);
-  font-family: var(--font-family1);
-}
-
-h2:nth-last-of-type(2) {
-  font-family: var(--font-family2);
-}
-/* Styling fonts  */
-
-h1 span {
+    font-size: var(--h1-font-size);
     font-family: var(--font-family1);
-    animation: switchFont 0.4s steps(1) forwards;
-    animation-delay: calc(var(--i) * 0.15s); 
-  }
-
-  @keyframes switchFont {
-    100% { font-family: var(--font-family2); }
-  }
-  
-
-p {
-    font-family: var(--font-para);
 }
 
-
+h2:nth-last-of-type(2){
+    font-family: var(--font-family2);
+}
 
 * {
   margin: 0;
@@ -60,56 +49,6 @@ p {
 }
 
 body {
-  min-height: 100vh;
-  overflow: hidden;
-  background: url("../img/spacebackground.png") center / cover no-repeat;
-  color: white;
-  
-}
-
-.astronaut-layer {
-  position: fixed;
-  inset: 0;
-  z-index: 5;
-}
-
-.astronaut {
-  position: fixed;
-  width: clamp(34px, 14vw, 64px); /* mobile first */
-  opacity: 0.95;
-  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.45));
-  will-change: transform;
-  animation: floatOrbit 10s ease-in-out infinite alternate;
-}
-
-
-.popup {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-color: white;
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-  z-index: 100;
-  width: 50%;
-}
-
-.popup-inhoud {
-  display: flex;
-  padding-top: 1rem;
-  gap: 2    rem;
-  line-height: 1.8em;
-}
-
-.popup-inhoud img {
-  width: 120px;
-  object-fit: cover;
-}
-
-.verborgen {
-  display: none;
   background-color: black;
   background-image: url("/img/spacebackground.png");
   overflow-x: hidden;
