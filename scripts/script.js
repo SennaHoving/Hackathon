@@ -36,4 +36,44 @@ document.addEventListener("click", function (e) {
   }
 });
 
+function animateAstronauts() {
+  const astronauts = document.querySelectorAll('.astronaut');
+  astronauts.forEach((astronaut, index) => {
+    const direction = index % 2 === 0 ? 'left' : 'right'; // Even index naar links, oneven naar rechts
+    const randomDuration = Math.random() * 2 + 2; // Willekeurige duur tussen 2 en 4 seconden
+
+    astronaut.style.transition = `transform ${randomDuration}s ease-in-out`;
+    astronaut.style.transform = direction === 'left' ? 'translateX(-100vw)' : 'translateX(100vw)';
+
+    // Reset de positie na de animatie
+    setTimeout(() => {
+      astronaut.style.transform = 'translateX(0)';
+    }, randomDuration * 1000);
+  });
+}
+
+function setupAstronauts() {
+  const astronauts = [...document.querySelectorAll(".astronaut")].sort(
+    () => Math.random() - 0.5
+  );
+
+  astronauts.forEach((el, i) => {
+    const leftToRight = i % 2 === 0; // na shuffle = random patroon, ongeveer helft/helft
+
+    el.style.setProperty("--y", `${10 + Math.random() * 90}%`);
+    el.style.setProperty("--dur", `${20 + Math.random() * 90}s`);
+    el.style.setProperty("--delay", `${-Math.random() * 50}s`);
+    el.style.setProperty("--fromX", leftToRight ? "-25vw" : "125vw");
+    el.style.setProperty("--toX", leftToRight ? "125vw" : "-25vw");
+  });
+}
+
+document.addEventListener("DOMContentLoaded", setupAstronauts);
+
+// Start de animatie bij het laden van de pagina
+window.onload = animateAstronauts;
+
+
+
+
 
