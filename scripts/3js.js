@@ -31,19 +31,19 @@ const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
 camera.position.set(0, 0, 11); 
 
 // 3D Shape 
-const loader = new GLTFLoader(); 
-loader.load( "../assets/module.glb", function (gltf) {
-    const cube = gltf.scene
+// const loader = new GLTFLoader(); 
+// loader.load( "../assets/module.glb", function (gltf) {
+//     const cube = gltf.scene
 
-    cube.traverse((child) => {
-        if (child.isMesh) {
-            child.material.needsUpdate = true;
-        }
-    });
+//     cube.traverse((child) => {
+//         if (child.isMesh) {
+//             child.material.needsUpdate = true;
+//         }
+//     });
     
-    console.log( cube )
-    scene.add( cube ); 
-});
+//     console.log( cube )
+//     scene.add( cube ); 
+// });
 
 // Render
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
