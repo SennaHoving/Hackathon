@@ -8,6 +8,14 @@
     <link rel="stylesheet" href="styles/style.css" />
     <link rel="stylesheet" href="styles/header.css" />
     <link rel="stylesheet" href="styles/main.css" />
+
+    <script type="importmap">
+      {"imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/"
+        }
+      }
+    </script>
   </head>
   <body>
     <header>
@@ -120,9 +128,15 @@
             </div>
             <button id="popup-sluit">Sluiten</button>
         </section>
+
+        <section id="module">
+          <button>Button</button>
+          <button id="comp1">component 1</button>
+        </section>
       </main>
     </main>
 
     <script src="scripts/script.js"></script>
+    <script type="module" src="scripts/3js.js"></script>
   </body>
 </html>
