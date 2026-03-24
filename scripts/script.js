@@ -23,7 +23,7 @@ const far = 100;
 
 const camera = new THREE.PerspectiveCamera(fov, aspect, near, far); 
 camera.position.set(0, 0, 10); 
-
+// TEst
 // 3D Shape 
 const loader = new GLTFLoader(); 
 loader.load( "../ass/cube.glb", function (gltf) {
