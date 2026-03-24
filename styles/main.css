@@ -1,0 +1,178 @@
+/* =============
+   PHASE 1
+============= */
+
+/* ------ MARK: PHASE 1 
+*/
+
+.phase-1 {
+  height: 400vh;
+  view-timeline-name: --space-timeline;
+  view-timeline-axis: block;
+}
+
+.sticky-scene {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: radial-gradient(circle, transparent 20%, black 100%);
+}
+
+.text-p1 {
+  position: absolute;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  width: min(600px, 90vw);
+  text-align: center;
+  border-radius: 20px;
+  padding: 30px 36px;
+  background: rgba(10, 10, 20, 0.45);
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow:
+    0 8px 40px 0 rgba(0, 0, 0, 0.85),
+    inset 0 0 16px rgba(80, 130, 255, 0.08);
+  transition: opacity 0.3s ease;
+}
+
+h1 {
+  font-size: clamp(28px, 5vw, 54px);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 12px;
+  text-shadow: 0 0 40px rgba(120, 160, 255, 0.5);
+}
+
+.text-p1 p {
+  line-height: 1.7;
+  font-size: clamp(14px, 1.5vw, 16px);
+  color: #b0b8d0;
+}
+
+/* ---- De Aarde ---- */
+.earth-container {
+  position: absolute;
+  z-index: 2;
+  width: 600px;
+  filter: drop-shadow(
+    0 0 40px rgba(0, 100, 255, 0.3)
+  ); /* Zachte blauwe gloed */
+
+  animation: moveEarth linear both;
+  animation-timeline: --space-timeline;
+  animation-range: entry 100% exit 0%;
+}
+
+.earth-container img {
+  width: 100%;
+  /* Altijd een heel klein beetje laten draaien voor 'life' */
+  animation: rotateSlow 100s linear infinite;
+}
+
+/* ---- Het Zwarte Gat ---- */
+.black-hole-container {
+  position: absolute;
+  z-index: 1;
+  width: 600px;
+
+  /* Koppelen aan dezelfde scroll-tijdlijn */
+  animation: showBlackHole linear both;
+  animation-timeline: --space-timeline;
+  animation-range: entry 100% exit 0%;
+}
+
+.black-hole-container img {
+  width: 100%;
+}
+
+/* =======================
+   MOBILE OPTIMIZATION
+   ======================*/
+
+@media (max-width: 768px) {
+  .earth-container,
+  .black-hole-container {
+    width: 80vw; /* Gebruik 80% van de breedte van het scherm */
+  }
+
+  @keyframes moveEarth {
+    0% {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1.2);
+    }
+    100% {
+      top: 20%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.5);
+    }
+  }
+
+  @keyframes showBlackHole {
+    0% {
+      opacity: 0.1;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.1);
+    }
+    100% {
+      opacity: 1;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.5); /* PAS DIT AAN: moet gelijk zijn aan earth */
+    }
+  }
+}
+
+/* ========================================
+   ANIMATIONS
+   =======================================*/
+@keyframes moveEarth {
+  0% {
+    left: 50%;
+    transform: translateX(-50%) scale(1.6);
+  }
+  100% {
+    left: 25%;
+    transform: translateX(-50%) scale(0.7); /* De aarde eindigt op 0.7 */
+  }
+}
+
+@keyframes showBlackHole {
+  0% {
+    opacity: 0.1;
+    left: 75%;
+    transform: translateX(-50%) scale(0.1);
+  }
+  100% {
+    opacity: 1;
+    left: 75%;
+    transform: translateX(-50%) scale(0.7); /* PAS DIT AAN: was 1.1, nu 0.7 */
+  }
+}
+@keyframes rotateSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =============
+   PHASE 2
+============= */
+
+/* ------ MARK: PHASE 2
+*/
