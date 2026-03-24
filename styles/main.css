@@ -629,3 +629,24 @@ color: white;
     animation: none;
   }
 }
+
+/* =============
+   PHASE 4
+#module {
+    position: relative; 
+
+    button {
+        position: absolute; 
+        top: 1em; 
+        left: 1em;
+        padding: 0.5em 1em; 
+        border-radius: 999px; 
+        background-color: rgb(255, 255, 255); 
+        color: black; 
+        border: none; 
+
+        + button {
+            top: 4em;
+        }
+    }
+}   
