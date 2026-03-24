@@ -20,7 +20,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: radial-gradient(circle, transparent 20%, black 100%);
+  background-image: url(/img/spacebackground.png);
 }
 
 .text-p1 {
