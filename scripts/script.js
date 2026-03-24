@@ -37,3 +37,4 @@ document.querySelectorAll('.morph-text').forEach(el => {
     )
     .join('');
 });
+
