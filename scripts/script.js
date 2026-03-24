@@ -75,18 +75,16 @@ function moveCameraTo(newPosition, newLook) {
 
 // Click 
 document.querySelector("button").addEventListener("click", () => {
-    console.log('sup');
     const targetPos = new THREE.Vector3(0, 0, 10);
     const lookAt = new THREE.Vector3(0, 0, 0);
     moveCameraTo(targetPos, lookAt);
 })
 
-// document.querySelector("button").addEventListener("click", () => {
-//     console.log('sup');
-//     const targetPos = new THREE.Vector3(5, 5, 5);
-//     const lookAt = new THREE.Vector3(1, 0, 0);
-//     moveCameraTo(targetPos, lookAt);
-// })
+document.getElementById("comp1").addEventListener("click", () => {
+    const targetPos = new THREE.Vector3(5, 5, 5);
+    const lookAt = new THREE.Vector3(1, 0, 0);
+    moveCameraTo(targetPos, lookAt);
+})
 
 // Responsive resize
 window.addEventListener("resize", () => {
