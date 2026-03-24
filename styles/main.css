@@ -103,7 +103,7 @@ h1 {
 @media (max-width: 768px) {
   .earth-container,
   .black-hole-container {
-    width: 80vw; /* Gebruik 80% van de breedte van het scherm */
+    width: 80vw; 
   }
 
   @keyframes moveEarth {
@@ -130,7 +130,7 @@ h1 {
       opacity: 1;
       top: 60%;
       left: 50%;
-      transform: translate(-50%, -50%) scale(0.5); /* PAS DIT AAN: moet gelijk zijn aan earth */
+      transform: translate(-50%, -50%) scale(0.5);
     }
   }
 }
@@ -145,7 +145,7 @@ h1 {
   }
   100% {
     left: 25%;
-    transform: translateX(-50%) scale(0.7); /* De aarde eindigt op 0.7 */
+    transform: translateX(-50%) scale(0.7); 
   }
 }
 
@@ -158,7 +158,7 @@ h1 {
   100% {
     opacity: 1;
     left: 75%;
-    transform: translateX(-50%) scale(0.7); /* PAS DIT AAN: was 1.1, nu 0.7 */
+    transform: translateX(-50%) scale(0.7); 
   }
 }
 @keyframes rotateSlow {
@@ -178,7 +178,7 @@ h1 {
 */
 .astronaut-layer {
   position: relative;
-  min-height: 100vh; /* of 100vh/200vh naar wens */
+  min-height: 100vh;
   background: url("/img/spacebackground.png") center / cover no-repeat;
   overflow: hidden;
 }
@@ -224,7 +224,6 @@ color: white;
 
 
 
-/* Mobile positions + alleen timing per item */
 .astronaut:nth-child(1) { left: 4vw;  top: 20vh; animation-duration: 8.5s;  animation-delay: -1s; }
 .astronaut:nth-child(2) { left: 70vw; top: 18vh; animation-duration: 9.5s;  animation-delay: -3s; }
 .astronaut:nth-child(3) { left: 8vw;  top: 52vh; animation-duration: 10s;   animation-delay: -5s; }
@@ -241,30 +240,17 @@ color: white;
   }
 }
 
-/* Tablet/Desktop */
-@media (min-width: 768px) {
-  .astronaut {
-    width: clamp(52px, 7vw, 110px);
-  }
-}
 
-/* Respect user setting */
-@media (prefers-reduced-motion: reduce) {
-  .astronaut {
-    animation: none;
-  }
-}
 
 .rocket-scroll {
   position: fixed;
   right: 12px;
   top: 0;
-  width: clamp(40px, 6vw, 90px);
+  width: 72px;
   height: auto;
   z-index: 1200;
   pointer-events: none;
 
-  /* Start boven, eindigt onder bij einde van de pagina */
   animation: rocketDown linear both;
   animation-timeline: scroll(root block);
   animation-range: 0% 100%;
@@ -272,9 +258,21 @@ color: white;
 
 @keyframes rocketDown {
   from {
-    transform: translateY(0);
+    transform: translateY(0) rotate(180deg);
   }
   to {
-    transform: translateY(calc(100vh - 100%));
+    transform: translateY(85vh) rotate(180deg);
+  }
+}
+
+@media (min-width: 768px) {
+  .astronaut {
+    width: clamp(52px, 7vw, 110px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .astronaut {
+    animation: none;
   }
 }
