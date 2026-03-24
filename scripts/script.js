@@ -6,14 +6,12 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 const moduleContainer = document.getElementById("module"); 
 
 let cameraTargetPos = null;
-let cameraTarget = null;
 
 const width = window.innerWidth;
 const height = window.innerHeight;
 
 // Scene
 const scene = new THREE.Scene()
-// scene.background = new THREE.Color('#009398')
 
 // Light
 const Light = new THREE.DirectionalLight(0xffffff, 5);
