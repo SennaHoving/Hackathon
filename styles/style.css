@@ -33,14 +33,24 @@
 }
 
 
-h2 {
-    font-size: var(--h1-font-size);
+/* Styling fonts  */
+
+h1 span {
     font-family: var(--font-family1);
+    animation: switchFont 0.4s steps(1) forwards;
+    animation-delay: calc(var(--i) * 0.15s); 
+  }
+
+  @keyframes switchFont {
+    100% { font-family: var(--font-family2); }
+  }
+  
+
+p {
+    font-family: var(--font-para);
 }
 
-h2:nth-last-of-type(2){
-    font-family: var(--font-family2);
-}
+
 
 * {
   margin: 0;
@@ -55,7 +65,7 @@ body {
   overflow: hidden;
   background: url("../img/spacebackground.png") center / cover no-repeat;
   color: white;
-  font-family: sans-serif;
+  
 }
 
 .astronaut-layer {
