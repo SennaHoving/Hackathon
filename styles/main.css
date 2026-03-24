@@ -192,7 +192,6 @@ h1 {
   animation: floatOrbit 10s ease-in-out infinite alternate;
 }
 
-/* ...existing code... */
 
 .popup {
   position: fixed;
@@ -253,5 +252,29 @@ color: white;
 @media (prefers-reduced-motion: reduce) {
   .astronaut {
     animation: none;
+  }
+}
+
+.rocket-scroll {
+  position: fixed;
+  right: 12px;
+  top: 0;
+  width: clamp(40px, 6vw, 90px);
+  height: auto;
+  z-index: 1200;
+  pointer-events: none;
+
+  /* Start boven, eindigt onder bij einde van de pagina */
+  animation: rocketDown linear both;
+  animation-timeline: scroll(root block);
+  animation-range: 0% 100%;
+}
+
+@keyframes rocketDown {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(100vh - 100%));
   }
 }
