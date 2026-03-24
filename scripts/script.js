@@ -5,6 +5,15 @@ hamburger.addEventListener("click", () => {
   navLinks.classList.toggle("active");
 });
 
+// dit geeft de H1 alle letter een span zodat het 1 vvor 1 de letters verandere
+document.querySelectorAll('.morph-text').forEach(el => {
+  const text = el.textContent;
+  el.innerHTML = text
+    .split('')
+    .map((char, i) => `<span style="--i:${i}">${char === ' ' ? '&nbsp;' : char}</span>`)
+    .join('');
+});
+
 document.querySelectorAll('.astronaut').forEach(function(img) {
   img.addEventListener('click', function() {
     document.getElementById('popup-naam').textContent = img.dataset.naam;
@@ -26,3 +35,5 @@ document.addEventListener('click', function(e) {
     sluitPopup();
   }
 });
+
+
