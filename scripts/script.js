@@ -47,7 +47,9 @@ loader.load( "../ass/module.glb", function (gltf) {
 });
 
 // Render
-const renderer = new THREE.WebGLRenderer(); 
+const renderer = new THREE.WebGLRenderer({
+    antialias: true, 
+}); 
 renderer.setSize(width, height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
