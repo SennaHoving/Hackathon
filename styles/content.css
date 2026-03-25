@@ -62,6 +62,14 @@ body {
   align-items: center;
 }
 
+@media (max-width: 768px) {
+  .elements {
+    flex-direction: column;
+    gap: 40px;
+    height: auto;
+  }
+}
+
 .elements {
   display: flex;
   gap: 20px;
@@ -77,28 +85,31 @@ body {
   align-items: center;
   border-radius: 8px;
   font-weight: bold;
-  overflow: hidden;
+  overflow: visible;
   animation-timeline: --section-scroll;
   animation-range: entry 0% exit 50%;
 }
 
 /* Specifieke styling per box zonder extra classes */
 #earth {
-  background: #3498db;
-  width: 80vw;
-  max-width: 80vh;
+  width: 91vw;
+  max-width: 1200px;
   animation-name: shrink-to-square;
 }
 
+#earth img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+}
+
 #mt {
-  background: #e67e22;
   width: 0%;
   opacity: 0;
   animation-name: grow-to-square;
 }
 
 #black-hole {
-  background: #f1c40f;
   width: 0%;
   opacity: 0;
   animation-name: grow-to-square;
