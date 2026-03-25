@@ -83,7 +83,8 @@ h1 {
 .black-hole-container {
   position: absolute;
   z-index: 1;
-  width: 600px;
+  width: 1000px;
+  aspect-ratio: 1 / 1;
   animation: showBlackHole linear both;
   animation-timeline: --space-timeline;
   animation-range: entry 100% exit 0%;
@@ -91,6 +92,17 @@ h1 {
 
 .black-hole-container img {
   width: 100%;
+}
+
+#blackhole-root {
+  width: 100%;
+  height: 100%;
+}
+
+#blackhole-root canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 /* =========================================
@@ -571,7 +583,7 @@ color: white;
   border-radius: 10px;
   box-shadow: 0 8px 30px rgba(0,0,0,0.3);
   z-index: 100;
-  width: 50%;
+  width: 60%;
 }
 
 .popup-inhoud {
@@ -582,7 +594,8 @@ color: white;
 }
 
 .popup-inhoud img {
-  width: 200px;
+  width: 250px;
+  height: 250px;
   object-fit: cover;
 }
 
