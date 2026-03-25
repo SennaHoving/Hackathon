@@ -10,6 +10,7 @@ if (!mount) throw new Error("Geen #three-root of #module gevonden.");
 let cameraTargetPos = null;
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2(); 
+const textPanel = document.getElementById("module-info"); 
 
 // Scene
 const scene = new THREE.Scene();
@@ -25,7 +26,7 @@ scene.add(light2);
 
 // Camera
 const camera = new THREE.PerspectiveCamera(25, 1, 0.1, 100);
-camera.position.set(0, 0, 11);
+camera.position.set(0, 0, 8);
 
 // Renderer
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -158,7 +159,11 @@ function onClick() {
     const targetPos = cameraTargets[hovered.name];
     if(!targetPos) return; 
 
+    textPanel.style.display = "flex"; 
+    textPanel.querySelector("h4").innerText = hovered.name;
+
     moveCameraTo(targetPos);
 }
 
 window.addEventListener("pointerdown", onClick); 
+
