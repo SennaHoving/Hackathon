@@ -9,7 +9,7 @@ if (!mount) throw new Error("Geen #three-root of #module gevonden.");
 
 let cameraTargetPos = null;
 const raycaster = new THREE.Raycaster();
-const mouse = new THREE.Vector2();
+const mouse = new THREE.Vector2(); 
 
 // Scene
 const scene = new THREE.Scene();
@@ -53,8 +53,8 @@ loader.load(
 );
 
 function resizeRenderer() {
-  const w = mount.clientWidth || window.innerWidth;
-  const h = mount.clientHeight || window.innerHeight; // fallback hoogte
+  const w = mount.clientWidth;
+  const h = mount.clientHeight;
   renderer.setSize(w, h, false);
   camera.aspect = w / h;
   camera.updateProjectionMatrix();
@@ -79,10 +79,6 @@ function animate() {
   renderer.render(scene, camera);
 }
 
-// Buttons binnen #module
-// firstBtn?.addEventListener("click", () => moveCameraTo(new THREE.Vector3(0, 0, 11)));
-// comp1Btn?.addEventListener("click", () => moveCameraTo(new THREE.Vector3(5, 5, 5)));
-
 window.addEventListener("resize", resizeRenderer);
 
 resizeRenderer();
@@ -95,7 +91,7 @@ const boxes = [];
 
 function makeHitbox (name, size, pos) {
     const geometry = new THREE.BoxGeometry(size.x, size.y, size.z);
-    const material = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: false, visible: true, opacity: 0.5, transparent: true });
+    const material = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: false, visible: true, opacity: 0.1, transparent: true });
     const cube = new THREE.Mesh(geometry, material);
 
     cube.name = name;
@@ -136,9 +132,13 @@ function onMove() {
     }
 }
 
+//Cursor
+const canvas = renderer.domElement;
 window.addEventListener("pointermove", (event) => {
-    mouse.x =  (event.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    const rect = canvas.getBoundingClientRect(); // correct canvas dimensions
+
+    mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+    mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
 
     onMove();
 });
