@@ -42,7 +42,6 @@ controls.enableZoom = false;
 
 // Model
 const loader = new GLTFLoader();
-// const modelContainer = new THREE.Group();
 loader.load(
   "../assets/moduleC.glb",
   (gltf) => {
@@ -51,7 +50,6 @@ loader.load(
       if (child.isMesh && child.material) child.material.needsUpdate = true;
     });
     scene.add(model); 
-    // scene.add(modelContainer);
   },
   undefined,
   (err) => console.error("GLB load error:", err)
@@ -81,14 +79,6 @@ function animate() {
     }
   }
 
-  // if (modelTargetPos) {
-  //   modelContainer.position.lerp(modelTargetPos, 0.05);
-  //   if (modelContainer.position.distanceTo(modelTargetPos) < 0.01) {
-  //       modelContainer.position.copy(modelTargetPos);
-  //       modelTargetPos = null;
-  //   }
-  // }
-
   renderer.render(scene, camera);
 }
 
@@ -102,13 +92,14 @@ animate();
 // Create hitbox function
 const boxes = [];
 
-function makeHitbox (name, number, size, pos) {
+function makeHitbox (name, number, description, size, pos) {
     const geometry = new THREE.BoxGeometry(size.x, size.y, size.z);
     const material = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: false, visible: true, opacity: 0.1, transparent: true });
     const cube = new THREE.Mesh(geometry, material);
 
     cube.name = name;
     cube.number = number; 
+    cube.description = description;
     cube.position.set(pos.x, pos.y, pos.z); 
 
     scene.add(cube);
@@ -116,15 +107,15 @@ function makeHitbox (name, number, size, pos) {
 }
 
 // Hitbox Solar panel
-makeHitbox("Solar Panel", "01", { x: 0.6, y: 1, z: 0.1 }, { x: 0.57, y: -0.08, z: 0.27 });
+makeHitbox("Solar Panel", "01", "De Solar Panel van de NEBULA-Xplorer is in stowed configuratie verbonden met de rigide spacecraft-body via twee roterende scharnieren, waardoor er mogelijke dynamische effecten zoals resonantie in de panelen kunnen optreden bij beweging van het S/C. Deze effecten zijn voorlopig niet meegenomen in het AOCS-ontwerp, maar de zonnepanelen beïnvloeden gedeeltelijk het Center of Pressure en worden meegenomen in de torqueberekeningen van het systeem.", { x: 0.6, y: 1, z: 0.1 }, { x: 0.57, y: -0.08, z: 0.27 });
 // Xray instrument
-makeHitbox("X-ray instrument", "02", { x: 0.3, y: 0.2, z: 0.4 }, { x: 0, y: 0.5, z: -0.12 });
+makeHitbox("X-ray instrument", "02", "Het X-ray instrument is geplaatst langs de centrale line-of-sight van de body Z-as en wordt beschermd tegen ultraviolet, zichtbaar en infrarood licht door concentrator sunshades bestaande uit 0,5 mm dikke CFRP-panelen op een Ti-6Al-4V baseplate. Het instrument is structureel bevestigd aan de CFRP sandwichpanelen via inserts volgens ECSS-richtlijnen, wat een nauwkeurige pointing mogelijk maakt met een Absolute Performance Error van maximaal 240 arcsec en een Performance Drift Error van maximaal 60 arcsec.", { x: 0.3, y: 0.2, z: 0.4 }, { x: 0, y: 0.5, z: -0.12 });
 //Separation plane
-makeHitbox("Separation plane", "03", { x: 0.5, y: 0.5, z: 0.1 }, { x: 0, y: 0, z: -0.4 });
+makeHitbox("Separation plane", "03", "De Separation Plane of LV adapter maakt gebruik van een MkII 15-inch MLB adapter die stijf en lichtgewicht is en ongeveer 6,6 keer stijver dan de 8-inch variant. Deze adapter is vervaardigd uit massief aluminium 6061-T6 met SurTec 650 coating en heeft geen achterliggend skelet, waardoor lancering loads efficiënt worden verdeeld via web-ribs. Het SoftRide-isolatiesysteem dempt vibratie en shocks met een variërende dempingsratio van 3 tot 25 procent, afhankelijk van de grootte en massa van de S/C.", { x: 0.5, y: 0.5, z: 0.1 }, { x: 0, y: 0, z: -0.4 });
 //S-band antennas
-makeHitbox("S-band antennas", "04", { x: 0.1, y: 0.1, z: 0.1 }, { x: 0, y: -0.23, z: 0.35 });
+makeHitbox("S-band antennas", "04", "De S-band antennas worden bevestigd op secundaire CFRP-panelen via bolted inserts, waarbij titanium of A2-70 stainless steel wordt gebruikt om hoge betrouwbaarheid en thermische en elektrische geleiding te waarborgen. Deze interfaces voldoen aan ECSS-vereisten en zorgen voor een robuuste verbinding die demontage voor onderhoud of testen mogelijk maakt.", { x: 0.1, y: 0.1, z: 0.1 }, { x: 0, y: -0.23, z: 0.35 });
 //Star tracker 
-makeHitbox("Star tracker", "05", { x: 0.2, y: 0.2, z: 0.1 }, { x: 0, y: 0.5, z: 0.4 });
+makeHitbox("Star tracker", "05", "De Star Tracker bestaat uit twee ST-16RT2 sensoren die gemonteerd zijn op een hub van gefreesd aluminium 6061-T6 met SurTec 650 coating. Eén tracker is in lijn met de instrument LoS geplaatst, terwijl de andere 30 graden is gekanteld. De hub wordt bevestigd op de CFRP-eindplaat met vier M5-bouten en de baffles kunnen na installatie van de coversheet worden gemonteerd, waardoor de trackers attitudebepaling mogelijk maken met een nauwkeurigheid van circa 30 tot 50 arcsec, inclusief compensatie voor thermische misalignments.", { x: 0.2, y: 0.2, z: 0.1 }, { x: 0, y: 0.5, z: 0.4 });
 
 // 
 let hovered = null;
@@ -188,10 +179,9 @@ function onClick() {
     textPanel.style.display = "flex"; 
     textPanel.querySelector("h4").innerText = hovered.name;
     textPanel.querySelector("h5").innerText = hovered.number;
+    textPanel.querySelector("p").innerText = hovered.description;
   
     moveCameraTo(targetPos);
-
-    // moveModelForPanel(1.5);
 }
 
 window.addEventListener("pointerdown", onClick); 
