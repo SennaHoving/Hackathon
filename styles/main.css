@@ -571,7 +571,7 @@ color: white;
   border-radius: 10px;
   box-shadow: 0 8px 30px rgba(0,0,0,0.3);
   z-index: 100;
-  width: 50%;
+  width: 60%;
 }
 
 .popup-inhoud {
@@ -582,7 +582,8 @@ color: white;
 }
 
 .popup-inhoud img {
-  width: 200px;
+  width: 250px;
+  height: 250px;
   object-fit: cover;
 }
 
