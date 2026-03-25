@@ -528,14 +528,9 @@ p {
   }
 }
 
-/* ------ MARK: PHASE 2
+/*
+----- MARK: scroll bar
 */
-
-
-
-
-
-
 .rocket-scroll {
   position: fixed;
   right: 12px;
