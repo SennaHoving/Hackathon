@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
 const mount = document.getElementById("blackhole-root");
 
@@ -17,6 +18,11 @@ if (mount) {
 	renderer.toneMapping = THREE.ACESFilmicToneMapping;
 	renderer.toneMappingExposure = 1.0;
 	mount.appendChild(renderer.domElement);
+
+	// OrbitControls toevoegen
+	const controls = new OrbitControls(camera, renderer.domElement);
+	controls.enableDamping = true;
+	controls.enableZoom = false;
 
 	scene.add(new THREE.AmbientLight(0xffffff, 1.2));
 
@@ -38,8 +44,21 @@ if (mount) {
 		(gltf) => {
 			model = gltf.scene;
 
+			// Zoek de ring (accretieschijf) op naam of grootste mesh
+			let ring = null;
+			let maxArea = 0;
 			model.traverse((child) => {
 				if (!child.isMesh || !child.material) return;
+				// Probeer een mesh met 'ring' of 'disk' in de naam te vinden
+				if (!ring && child.name && /ring|disk|accretion/i.test(child.name)) {
+					ring = child;
+				}
+				// Fallback: grootste mesh als ring
+				const area = child.geometry.boundingBox ? child.geometry.boundingBox.getSize(new THREE.Vector3()).length() : 0;
+				if (area > maxArea) {
+					maxArea = area;
+					ring = child;
+				}
 
 				const materials = Array.isArray(child.material)
 					? child.material
@@ -64,6 +83,7 @@ if (mount) {
 			model.position.sub(center);
 
 			scene.add(model);
+			model.userData.ring = ring;
 		},
 		undefined,
 		(error) => {
@@ -80,10 +100,10 @@ if (mount) {
 	}
 
 	function animate() {
-		if (model) {
-			model.rotation.y += 0.0025;
-		}
-
+		controls.update();
+if (model && model.userData.ring) {
+    model.userData.ring.rotation.z += 0.004;
+}
 		renderer.render(scene, camera);
 		requestAnimationFrame(animate);
 	}
