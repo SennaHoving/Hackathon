@@ -1,8 +1,8 @@
-/* =============
-   PHASE 1
-============= */
-
-/* ------ MARK: PHASE 1 
+/* =========================================
+   PHASE 1 - GENERAL & STICKY SCENE
+   ========================================= */
+/*
+----- MARK: PHASE 1 
 */
 
 .phase-1 {
@@ -20,7 +20,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: radial-gradient(circle, transparent 20%, black 100%);
+  background-image: url(/img/spacebackground.png);
 }
 
 .text-p1 {
@@ -38,9 +38,7 @@
   -webkit-backdrop-filter: blur(14px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-top: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow:
-    0 8px 40px 0 rgba(0, 0, 0, 0.85),
-    inset 0 0 16px rgba(80, 130, 255, 0.08);
+  box-shadow: 0 8px 40px 0 rgba(0, 0, 0, 0.85);
   transition: opacity 0.3s ease;
 }
 
@@ -60,33 +58,32 @@ h1 {
   color: #b0b8d0;
 }
 
-/* ---- De Aarde ---- */
+/* =========================================
+   CONTAINERS & SPACE ANIMATIONS
+   ========================================= */
+
 .earth-container {
   position: absolute;
   z-index: 2;
   width: 600px;
-  filter: drop-shadow(
-    0 0 40px rgba(0, 100, 255, 0.3)
-  ); /* Zachte blauwe gloed */
-
+  filter: drop-shadow(0 0 40px rgba(0, 100, 255, 0.3));
   animation: moveEarth linear both;
   animation-timeline: --space-timeline;
   animation-range: entry 100% exit 0%;
+  /* Zorgt dat we punten hierbinnen absoluut kunnen plaatsen */
+  transform-style: preserve-3d;
 }
 
 .earth-container img {
   width: 100%;
-  /* Altijd een heel klein beetje laten draaien voor 'life' */
   animation: rotateSlow 100s linear infinite;
+  display: block;
 }
 
-/* ---- Het Zwarte Gat ---- */
 .black-hole-container {
   position: absolute;
   z-index: 1;
   width: 600px;
-
-  /* Koppelen aan dezelfde scroll-tijdlijn */
   animation: showBlackHole linear both;
   animation-timeline: --space-timeline;
   animation-range: entry 100% exit 0%;
@@ -96,14 +93,130 @@ h1 {
   width: 100%;
 }
 
-/* =======================
-   MOBILE OPTIMIZATION
-   ======================*/
+/* =========================================
+   PULSE POINTS (Floating & Interactive)
+   ========================================= */
+
+.data-points {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pulse-point {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: #eb5d34;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 20;
+  /* De zweef-animatie */
+  animation: floatEffect 3s ease-in-out infinite;
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease;
+}
+
+/* De pulserende ringen */
+.pulse-point .ring {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  margin: -6px 0 0 -6px;
+  border: 2px solid #eb5d34;
+  border-radius: 50%;
+  opacity: 0;
+  animation: orbit-pulse 2s infinite ease-out;
+  pointer-events: none;
+}
+
+/* Hover: Animatie pauzeren en kaart tonen */
+.pulse-point:hover {
+  animation-play-state: paused;
+  transform: scale(1.3);
+}
+
+.info-card {
+  position: absolute;
+  left: 30px; /* Ruimte vanaf het puntje */
+  top: 50%;
+  transform: translateY(-50%) translateX(10px);
+  width: 240px;
+  padding: 15px;
+  background: rgba(10, 10, 20, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(235, 93, 52, 0.4);
+  color: white;
+  border-radius: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  pointer-events: none;
+}
+
+.pulse-point:hover .info-card {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0);
+  pointer-events: auto;
+}
+
+.info-card h3 {
+  color: #eb5d34;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin: 0 0 8px 0;
+}
+
+.info-card p {
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0;
+  color: #d1d8e6;
+}
+
+/* =========================================
+   KEYFRAMES
+   ========================================= */
+
+@keyframes floatEffect {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(4px, -8px);
+  } /* Zweeft schuin omhoog */
+}
+
+@keyframes orbit-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+@keyframes rotateSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 @media (max-width: 768px) {
   .earth-container,
   .black-hole-container {
-    width: 80vw; /* Gebruik 80% van de breedte van het scherm */
+    width: 80vw; 
   }
 
   @keyframes moveEarth {
@@ -130,7 +243,7 @@ h1 {
       opacity: 1;
       top: 60%;
       left: 50%;
-      transform: translate(-50%, -50%) scale(0.5); /* PAS DIT AAN: moet gelijk zijn aan earth */
+      transform: translate(-50%, -50%) scale(0.5);
     }
   }
 }
@@ -145,7 +258,7 @@ h1 {
   }
   100% {
     left: 25%;
-    transform: translateX(-50%) scale(0.7); /* De aarde eindigt op 0.7 */
+    transform: translateX(-50%) scale(0.7); 
   }
 }
 
@@ -158,21 +271,391 @@ h1 {
   100% {
     opacity: 1;
     left: 75%;
-    transform: translateX(-50%) scale(0.7); /* PAS DIT AAN: was 1.1, nu 0.7 */
+    transform: translateX(-50%) scale(0.7); 
   }
 }
-@keyframes rotateSlow {
+
+/* =========================================
+   MOBILE & RESPONSIVE
+   ========================================= */
+
+@keyframes moveEarthMobile {
+  0% {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+  100% {
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.6);
+  }
+}
+
+@keyframes showBlackHoleMobile {
+  0% {
+    opacity: 0;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+  }
+  100% {
+    opacity: 1;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.6);
+  }
+}
+
+@media (max-width: 768px) {
+  .earth-container {
+    width: 65vw;
+    animation-name: moveEarthMobile;
+  }
+  .black-hole-container {
+    width: 65vw;
+    animation-name: showBlackHoleMobile;
+  }
+  .info-card {
+    width: 180px;
+    left: auto;
+    right: 30px; /* Kaart aan de andere kant op mobile indien nodig */
+  }
+}
+
+/*
+----- MARK: INFORMATION TEXT 
+*/
+.text-mission {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+ 
+  width: 100%;
+  max-width: 500px;
+ 
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+ 
+.mission {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  height: 100vh;
+}
+ 
+.mission img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 15px;
+}
+ 
+@media (min-width: 768px) {
+  .mission {
+    flex-direction: row;
+    justify-content: center;
+    padding: 40px;
+    gap: 50px;
+  }
+ 
+  .text-mission {
+    text-align: left;
+    align-items: flex-start;
+  }
+ 
+  .mission img {
+    width: 35%;
+    max-width: none;
+  }
+}
+ 
+h5 {
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #494949;
+  font-weight: 400;
+}
+h5 span {
+  display: inline-block;
+  vertical-align: middle;
+  width: 40px;
+  height: 1px;
+  background-color: #494949;
+  margin: 0 10px;
+  opacity: 0.5;
+}
+h4 {
+  color: white;
+  font-size: 40px;
+}
+ 
+p {
+  color: white;
+  line-height: 1.8;
+  text-align: justify;
+  text-justify: inter-word;
+}
+ 
+/* lijntje */
+ 
+.line {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 15px 0;
+}
+ 
+/* text boxes */
+/* --- Desktop & Algemene Styling --- */
+.extra-info {
+  display: flex;
+  gap: 20px;
+  flex-direction: row;
+  padding: 0 150px;
+}
+ 
+.extra-info ul {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-direction: row;
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+ 
+.extra-info li {
+  flex: 1;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 40px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 217, 255, 0.3);
+  background: rgba(10, 20, 30, 0.7);
+}
+ 
+.extra-info li h6 {
+  color: #fff;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 45px;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin: 0;
+}
+ 
+.extra-info li p {
+  color: rgba(255, 255, 255, 0.8);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 15.2px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.304px;
+  margin: 0;
+}
+ 
+.extra-info span {
+  display: inline-block;
+  width: fit-content;
+  min-width: 120px;
+  padding: 5px 15px;
+  color: #eb5d34;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 2px;
+  border: 1px solid rgba(235, 93, 52, 0.5);
+  background: rgba(235, 93, 52, 0.2);
+  box-shadow: 0 0 10px 0 rgba(235, 93, 52, 0.3);
+  text-align: center;
+}
+ 
+@media (max-width: 1024px) {
+  .extra-info {
+    padding: 0 50px;
+  }
+}
+ 
+@media (max-width: 768px) {
+  .extra-info {
+    padding: 0 20px;
+    flex-direction: column;
+  }
+ 
+  .extra-info ul {
+    flex-direction: column;
+    gap: 15px;
+  }
+ 
+  .extra-info li {
+    width: 100%;
+    padding: 25px;
+  }
+ 
+  .extra-info li h6 {
+    font-size: 28px;
+    letter-spacing: 2px;
+  }
+ 
+  .extra-info li p {
+    font-size: 14px;
+  }
+ 
+  .extra-info span {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+/* ------ MARK: PHASE 2
+*/
+.astronaut-layer {
+  position: relative;
+  min-height: 100vh;
+  background: url("/img/spacebackground.png") center / cover no-repeat;
+  overflow: hidden;
+}
+
+.astronaut {
+  position: absolute;
+  top: var(--y, 50%);
+  left: 0;
+  width: clamp(34px, 14vw, 64px);
+  opacity: 0.95;
+  will-change: transform;
+
+  animation-name: flyAcross;
+  animation-duration: var(--dur, 120s);
+  animation-timing-function: linear;
+  animation-delay: var(--delay, 5s);
+  animation-iteration-count: infinite;
+}
+
+@keyframes flyAcross {
   from {
-    transform: rotate(0deg);
+    transform:
+      translateX(var(--fromX, -25vw))
+      translateY(-50%)
+      rotate(var(--rotFrom, -6deg))
+      scale(var(--scaleFrom, 1));
   }
   to {
-    transform: rotate(360deg);
+    transform:
+      translateX(var(--toX, 125vw))
+      translateY(-50%)
+      rotate(var(--rotTo, 6deg))
+      scale(var(--scaleTo, 1));
+  }
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+color: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  z-index: 100;
+  width: 60%;
+}
+
+.popup-inhoud {
+  display: flex;
+  padding-top: 1rem;
+  gap: 2rem;
+  line-height: 1.8em;
+}
+
+.popup-inhoud img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+}
+
+.verborgen {
+  display: none;
+}
+
+
+
+
+
+
+.rocket-scroll {
+  position: fixed;
+  right: 12px;
+  top: 0;
+  width: 72px;
+  height: auto;
+  z-index: 1200;
+  pointer-events: none;
+
+  animation: rocketDown linear both;
+  animation-timeline: scroll(root block);
+  animation-range: 0% 100%;
+}
+
+@keyframes rocketDown {
+  from {
+    transform: translateY(0) rotate(180deg);
+  }
+  to {
+    transform: translateY(85vh) rotate(180deg);
+  }
+}
+
+@media (min-width: 768px) {
+  .astronaut {
+    width: clamp(52px, 7vw, 110px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .astronaut {
+    animation: none;
   }
 }
 
 /* =============
-   PHASE 2
-============= */
+   /* PHASE 4 */
+#module {
+  position: relative;
+  min-height: 420px;
+}
 
-/* ------ MARK: PHASE 2
-*/
+#three-root {
+  width: 100%;
+  height: 420px;
+}
+
+#three-root canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.module-controls {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  display: flex;
+  gap: 8px;
+}
+
+/* ...existing code... */

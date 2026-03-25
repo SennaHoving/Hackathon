@@ -127,8 +127,10 @@ display: inline-block;
 }
 
 body {
-    background-color: black;
-    background-image: url("/img/spacebackground.png");
-    overflow-x: hidden;
-    scroll-behavior: smooth;
+  background-color: black;
+  background-image: url("/img/spacebackground.png");
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
+
+
