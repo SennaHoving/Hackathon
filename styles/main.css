@@ -647,12 +647,12 @@ color: white;
    /* PHASE 4 */
 #module {
   position: relative;
-  min-height: 420px;
+  min-height: 100vh;
 }
 
 #three-root {
   width: 100%;
-  height: 420px;
+  height: 100vh;
 }
 
 #three-root canvas {
@@ -669,5 +669,32 @@ color: white;
   display: flex;
   gap: 8px;
 }
+
+#module-info {
+  gap: 10px;
+  flex-direction: column;
+ 
+  width: 100%;
+  max-width: 500px;
+ 
+  justify-content: center;
+  align-items: start;
+  padding: 20px;
+
+  position: absolute; 
+  top: 50%; 
+  left: 10%; 
+  transform: translateY(-50%); 
+  display: none; 
+
+  .line {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 15px 0;
+  }
+}
+
 
 /* ...existing code... */
