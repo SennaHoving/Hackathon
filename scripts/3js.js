@@ -11,8 +11,6 @@ let cameraTargetPos = null;
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2(); 
 const textPanel = document.getElementById("module-info"); 
-let modelTargetPos = null;
-let offset = 1; 
 
 // Scene
 const scene = new THREE.Scene();
@@ -42,9 +40,7 @@ controls.enableZoom = false;
 
 // Model
 const loader = new GLTFLoader();
-loader.load(
-  "../assets/moduleC.glb",
-  (gltf) => {
+loader.load("../assets/moduleC.glb", (gltf) => {
     const model = gltf.scene;
     model.traverse((child) => {
       if (child.isMesh && child.material) child.material.needsUpdate = true;
@@ -148,7 +144,7 @@ window.addEventListener("pointermove", (event) => {
     onMove();
 });
 
-// Onclick camare move
+// Onclick camera move
 const cameraTargets = {
     "Solar Panel": new THREE.Vector3(5, 0, 5),
     "X-ray instrument": new THREE.Vector3(0, 5, 4), 
@@ -156,19 +152,6 @@ const cameraTargets = {
     "S-band antennas": new THREE.Vector3(0, -2, 4),
     "Star tracker": new THREE.Vector3(0, 2, 3), 
 };
-
-// Move model group to side
-function moveModelForPanel(offsetX = 0) {
-  modelTargetPos = new THREE.Vector3(offsetX, modelContainer.position.y, modelContainer.position.z);
-
-  // Compute new center
-  const box = new THREE.Box3().setFromObject(modelContainer);
-  const center = new THREE.Vector3();
-  box.getCenter(center);
-
-  // Update OrbitControls target
-  controls.target.copy(center);
-}
 
 function onClick() {
     if (!hovered) return;
