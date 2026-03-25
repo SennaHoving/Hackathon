@@ -11,6 +11,8 @@ let cameraTargetPos = null;
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2(); 
 const textPanel = document.getElementById("module-info"); 
+let modelTargetPos = null;
+let offset = 1; 
 
 // Scene
 const scene = new THREE.Scene();
@@ -40,6 +42,7 @@ controls.enableZoom = false;
 
 // Model
 const loader = new GLTFLoader();
+// const modelContainer = new THREE.Group();
 loader.load(
   "../assets/moduleC.glb",
   (gltf) => {
@@ -47,7 +50,8 @@ loader.load(
     model.traverse((child) => {
       if (child.isMesh && child.material) child.material.needsUpdate = true;
     });
-    scene.add(model);
+    scene.add(model); 
+    // scene.add(modelContainer);
   },
   undefined,
   (err) => console.error("GLB load error:", err)
@@ -77,6 +81,14 @@ function animate() {
     }
   }
 
+  // if (modelTargetPos) {
+  //   modelContainer.position.lerp(modelTargetPos, 0.05);
+  //   if (modelContainer.position.distanceTo(modelTargetPos) < 0.01) {
+  //       modelContainer.position.copy(modelTargetPos);
+  //       modelTargetPos = null;
+  //   }
+  // }
+
   renderer.render(scene, camera);
 }
 
@@ -90,12 +102,13 @@ animate();
 // Create hitbox function
 const boxes = [];
 
-function makeHitbox (name, size, pos) {
+function makeHitbox (name, number, size, pos) {
     const geometry = new THREE.BoxGeometry(size.x, size.y, size.z);
     const material = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: false, visible: true, opacity: 0.1, transparent: true });
     const cube = new THREE.Mesh(geometry, material);
 
     cube.name = name;
+    cube.number = number; 
     cube.position.set(pos.x, pos.y, pos.z); 
 
     scene.add(cube);
@@ -103,15 +116,15 @@ function makeHitbox (name, size, pos) {
 }
 
 // Hitbox Solar panel
-makeHitbox("Solar Panel", { x: 0.6, y: 1, z: 0.1 }, { x: 0.57, y: -0.08, z: 0.27 });
+makeHitbox("Solar Panel", "01", { x: 0.6, y: 1, z: 0.1 }, { x: 0.57, y: -0.08, z: 0.27 });
 // Xray instrument
-makeHitbox("X-ray instrument", { x: 0.3, y: 0.2, z: 0.4 }, { x: 0, y: 0.5, z: -0.12 });
+makeHitbox("X-ray instrument", "02", { x: 0.3, y: 0.2, z: 0.4 }, { x: 0, y: 0.5, z: -0.12 });
 //Separation plane
-makeHitbox("Separation plane", { x: 0.5, y: 0.5, z: 0.1 }, { x: 0, y: 0, z: -0.4 });
+makeHitbox("Separation plane", "03", { x: 0.5, y: 0.5, z: 0.1 }, { x: 0, y: 0, z: -0.4 });
 //S-band antennas
-makeHitbox("S-band antennas", { x: 0.1, y: 0.1, z: 0.1 }, { x: 0, y: -0.23, z: 0.35 });
+makeHitbox("S-band antennas", "04", { x: 0.1, y: 0.1, z: 0.1 }, { x: 0, y: -0.23, z: 0.35 });
 //Star tracker 
-makeHitbox("Star tracker", { x: 0.2, y: 0.2, z: 0.1 }, { x: 0, y: 0.5, z: 0.4 });
+makeHitbox("Star tracker", "05", { x: 0.2, y: 0.2, z: 0.1 }, { x: 0, y: 0.5, z: 0.4 });
 
 // 
 let hovered = null;
@@ -146,12 +159,25 @@ window.addEventListener("pointermove", (event) => {
 
 // Onclick camare move
 const cameraTargets = {
-    "Solar Panel": new THREE.Vector3(5, 0, 7),
-    "X-ray instrument": new THREE.Vector3(0, 10, 4), 
-    "Separation plane": new THREE.Vector3(-5, 0, -5),
-    "S-band antennas": new THREE.Vector3(0, -2, 3),
+    "Solar Panel": new THREE.Vector3(5, 0, 5),
+    "X-ray instrument": new THREE.Vector3(0, 5, 4), 
+    "Separation plane": new THREE.Vector3(5, 0, -4),
+    "S-band antennas": new THREE.Vector3(0, -2, 4),
     "Star tracker": new THREE.Vector3(0, 2, 3), 
 };
+
+// Move model group to side
+function moveModelForPanel(offsetX = 0) {
+  modelTargetPos = new THREE.Vector3(offsetX, modelContainer.position.y, modelContainer.position.z);
+
+  // Compute new center
+  const box = new THREE.Box3().setFromObject(modelContainer);
+  const center = new THREE.Vector3();
+  box.getCenter(center);
+
+  // Update OrbitControls target
+  controls.target.copy(center);
+}
 
 function onClick() {
     if (!hovered) return;
@@ -161,8 +187,11 @@ function onClick() {
 
     textPanel.style.display = "flex"; 
     textPanel.querySelector("h4").innerText = hovered.name;
-
+    textPanel.querySelector("h5").innerText = hovered.number;
+  
     moveCameraTo(targetPos);
+
+    // moveModelForPanel(1.5);
 }
 
 window.addEventListener("pointerdown", onClick); 
