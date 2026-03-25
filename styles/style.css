@@ -2,12 +2,14 @@
 
     --font-family1: 'galactic';
     --font-family2: 'Deltha';
-    --font-para: 'Quicksand';
+    --font-para: 'spacemono';
+    --science-info:'opensans';
 
     --h1-font-size: clamp(1.875rem, -1.875rem + 10vw, 3.75rem);
 
     --p-font-size: clamp(1rem, 0.875rem + 0.6667vw, 1.25rem);
 
+    --h1-spacing: clamp(1rem, 0.5rem + 2vw, 3rem);
 
     --main-color: #004472;
     --accent-color: #181934;
@@ -27,6 +29,7 @@
       );
 }
 
+
 @font-face {
     font-family: 'galactic';
     src: url('/fonts/Everyday\ Galactic\ Alphabet.otf') format('truetype');
@@ -40,22 +43,17 @@
 }
 
 @font-face {
-    font-family: 'Quicksand';
-    src: url('/fonts/Quicksand-Medium.ttf') format('truetype');
+    font-family: 'spacemono';
+    src: url('/fonts/SpaceMono-Regular.ttf') format('truetype');
 
 }
 
 @font-face {
-    font-family: 'Quicksand-bold';
-    src: url('/fonts/Quicksand-Bold.ttf') format('truetype');
+    font-family: 'spacemon-bold';
+    src: url('/fonts/SpaceMono-Bold.ttf') format('truetype');
 
 }
 
-
-* {
-    margin: 0;
-    padding: 0;
-}
 
 
 /* Styling fonts  */
@@ -70,6 +68,8 @@ h1 span {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   }
+
+
 
   @keyframes switchFont {
     100% { font-family: var(--font-family2); }
@@ -88,14 +88,12 @@ p {
     color: var(--second-color);
 }
 
-.text-p1{
-    transition:ease-in 0.5s;
-}
-
+/* makes the span with this class a bolder fontsize */
 .boldspan{
-    font-family: 'Quicksand-bold';
+    font-family: 'spacemon-bold';
     color: var(--second-color);
 }
+
 
 * {
     margin: 0;
