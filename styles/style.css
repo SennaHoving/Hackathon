@@ -7,6 +7,8 @@
 
     --h1-font-size: clamp(1.875rem, -1.875rem + 10vw, 3.75rem);
 
+    --button-sizing: clamp(0.3rem, 0.3rem + 0.6vw, 0.9rem) clamp(1.2rem, 1rem + 2vw, 3rem);
+    --button-text:clamp(2rem, 0.875rem + 0.6667vw, 1.25rem);
     --p-font-size: clamp(1rem, 0.875rem + 0.6667vw, 1.25rem);
 
     --h1-spacing: clamp(1rem, 0.5rem + 2vw, 3rem);
@@ -92,6 +94,29 @@ p {
 .boldspan{
     font-family: 'spacemon-bold';
     color: var(--second-color);
+}
+
+
+/* button styling */
+.button_sron {
+display: inline-block;
+  background-color: var(--accent-color); 
+  color: var(--second-accent); 
+  font-size: var(--p-font-size);
+  font-family: var(--font-para);
+  text-transform: uppercase;
+  padding: var(--button-sizing);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.7s;
+}
+
+.button_sron:hover {
+    background-color: var(--second-accent); 
+  color:var(--accent-color);            
+  border-color: var(--accent-color);
+
 }
 
 
