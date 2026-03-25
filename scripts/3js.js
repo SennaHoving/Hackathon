@@ -8,13 +8,13 @@ const mount = document.getElementById("three-root") || document.getElementById("
 if (!mount) throw new Error("Geen #three-root of #module gevonden.");
 
 let cameraTargetPos = null;
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
 
 // Scene
 const scene = new THREE.Scene();
 
 // Licht
-scene.add(new THREE.AmbientLight(0xffffff, 1.2));
-
 const light1 = new THREE.DirectionalLight(0xffffff, 2.5);
 light1.position.set(10, 10, 10);
 scene.add(light1);
@@ -40,7 +40,7 @@ controls.enableZoom = false;
 // Model
 const loader = new GLTFLoader();
 loader.load(
-  "../assets/module.glb",
+  "../assets/moduleC.glb",
   (gltf) => {
     const model = gltf.scene;
     model.traverse((child) => {
@@ -54,7 +54,7 @@ loader.load(
 
 function resizeRenderer() {
   const w = mount.clientWidth || window.innerWidth;
-  const h = mount.clientHeight || 420; // fallback hoogte
+  const h = mount.clientHeight || window.innerHeight; // fallback hoogte
   renderer.setSize(w, h, false);
   camera.aspect = w / h;
   camera.updateProjectionMatrix();
@@ -80,14 +80,85 @@ function animate() {
 }
 
 // Buttons binnen #module
-const moduleSection = document.getElementById("module");
-const firstBtn = moduleSection?.querySelector("button");
-const comp1Btn = document.getElementById("comp1");
-
-firstBtn?.addEventListener("click", () => moveCameraTo(new THREE.Vector3(0, 0, 11)));
-comp1Btn?.addEventListener("click", () => moveCameraTo(new THREE.Vector3(5, 5, 5)));
+// firstBtn?.addEventListener("click", () => moveCameraTo(new THREE.Vector3(0, 0, 11)));
+// comp1Btn?.addEventListener("click", () => moveCameraTo(new THREE.Vector3(5, 5, 5)));
 
 window.addEventListener("resize", resizeRenderer);
 
 resizeRenderer();
 animate();
+
+
+// Interactive part module / satellite 
+// Create hitbox function
+const boxes = [];
+
+function makeHitbox (name, size, pos) {
+    const geometry = new THREE.BoxGeometry(size.x, size.y, size.z);
+    const material = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: false, visible: true, opacity: 0.5, transparent: true });
+    const cube = new THREE.Mesh(geometry, material);
+
+    cube.name = name;
+    cube.position.set(pos.x, pos.y, pos.z); 
+
+    scene.add(cube);
+    boxes.push(cube); 
+}
+
+// Hitbox Solar panel
+makeHitbox("Solar Panel", { x: 0.6, y: 1, z: 0.1 }, { x: 0.57, y: -0.08, z: 0.27 });
+// Xray instrument
+makeHitbox("X-ray instrument", { x: 0.3, y: 0.2, z: 0.4 }, { x: 0, y: 0.5, z: -0.12 });
+//Separation plane
+makeHitbox("Separation plane", { x: 0.5, y: 0.5, z: 0.1 }, { x: 0, y: 0, z: -0.4 });
+//S-band antennas
+makeHitbox("S-band antennas", { x: 0.1, y: 0.1, z: 0.1 }, { x: 0, y: -0.23, z: 0.35 });
+//Star tracker 
+makeHitbox("Star tracker", { x: 0.2, y: 0.2, z: 0.1 }, { x: 0, y: 0.5, z: 0.4 });
+
+// 
+let hovered = null;
+
+function onMove() {
+    raycaster.setFromCamera(mouse, camera);
+
+    const hits = raycaster.intersectObjects(boxes);
+    const hit = hits[0];
+
+    if (hovered !== hit?.object) {
+
+        // Remove previous highlight
+        if (hovered) hovered.material.opacity = 0.1;
+
+        // Apply new highlight
+        hovered = hit?.object || null;
+        if (hovered) hovered.material.opacity = 0.6;
+    }
+}
+
+window.addEventListener("pointermove", (event) => {
+    mouse.x =  (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+    onMove();
+});
+
+// Onclick camare move
+const cameraTargets = {
+    "Solar Panel": new THREE.Vector3(5, 0, 7),
+    "X-ray instrument": new THREE.Vector3(0, 10, 4), 
+    "Separation plane": new THREE.Vector3(-5, 0, -5),
+    "S-band antennas": new THREE.Vector3(0, -2, 3),
+    "Star tracker": new THREE.Vector3(0, 2, 3), 
+};
+
+function onClick() {
+    if (!hovered) return;
+
+    const targetPos = cameraTargets[hovered.name];
+    if(!targetPos) return; 
+
+    moveCameraTo(targetPos);
+}
+
+window.addEventListener("pointerdown", onClick); 
