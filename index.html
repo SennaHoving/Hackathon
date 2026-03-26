@@ -4,10 +4,23 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" type="text/css" href="./styles/style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title></title>
+    <title>Space Odyssey</title>
+    <link rel="icon" href="img/rocket.png" type="image/png">
+
     <link rel="stylesheet" href="styles/style.css" />
     <link rel="stylesheet" href="styles/header.css" />
     <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="styles/content.css" />
+    <link rel="stylesheet" href="styles/astronaut.css" />
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/"
+        }
+      }
+    </script>
   </head>
   <body>
     <header>
@@ -34,6 +47,13 @@
         </div>
 
         <ul id="nav-links">
+          <img
+            src="assets/logo-sron.webp"
+            alt="Bedrijfsnaam Logo"
+            width="200"
+            height="30"
+            id="logo"
+          />
           <li><a href="https://www.sron.nl">Home</a></li>
           <li>
             <a href="https://www.sron.nl/onderzoeksvragen/">Onderzoeksvragen</a>
@@ -47,82 +67,402 @@
       </nav>
     </header>
 
-    <img
-      class="rocket-scroll"
-      src="img/rocket.png"
-      alt=""
-      aria-hidden="true"
-    />
+    <img class="rocket-scroll" src="img/rocket.png" alt="" aria-hidden="true" />
 
+    <section>
+      <ul class="data-points">
+        <li class="pulse-point" style="top: 25%; left: 15%">
+          <span class="ring"></span>
+          <div class="info-card">
+            <h3>The Mission</h3>
+            <p>How do black holes consume stars? NEBULA-Xplorer studies X-ray binaries to unlock the secrets of the universe.</p>
+          </div>
+        </li>
+        <li class="pulse-point" style="top: 25%; left: 80%">
+          <span class="ring"></span>
+          <div class="info-card">
+            <h3>The Technology</h3>
+            <p>A compact satellite with 10 X-ray concentrators captures high-energy signals from space.</p>
+          </div>
+        </li>
+        <li class="pulse-point" style="top: 80%; left: 80%">
+          <span class="ring"></span>
+          <div class="info-card">
+            <h3>The Journey</h3>
+            <p>From student design to launch in 2030 — explore the steps behind building a real space mission.</p>
+          </div>
+        </li>
+      </ul>
+    </section>
     <main>
-      <main>
-        <!-- phase 1 -->
-        <section class="phase-1">
-          <div class="sticky-scene">
-            <div class="text-p1">
-              <h1 class="morph-text">NEBULA - Xplorer</h1>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisconsectetur
-                adipiscing elit.cing elit.
-              </p>
-            </div>
-            <div class="earth-container">
-              <img src="img/earth.png" alt="earth" />
-            </div>
-            <div class="black-hole-container">
-              <img src="img/earth.png" alt="black hole" />
+      <!-- Here comes titel and text -->
+      <section class="hero-text">
+        <div class="text-p1">
+          <h1 class="morph-text">NEBULA - Xplorer</h1>
+          <p>
+            Explore the mission behind <span class="nebula">NEBULA-Xplorer project</span> <br />
+            a pioneering Dutch satellite mission exploring how black holes
+            consume material from nearby stars. Launching around
+            <span class="boldspan">2030</span>, it aims to unlock new insights
+            into black holes and the origins of the universe. Here, you can
+            learn more about this exciting mission and how it connects science,
+            education, and innovation.
+          </p>
+        </div>
+      </section>
+      <!-- phase 1 -->
+      <section class="phase-1">
+        <div class="container">
+          <div class="sticky-box">
+            <div class="elements">
+              <section class="box" id="earth">
+                <img src="img/earth.png" alt="" />
+              </section>
+              <section class="box" id="mt">
+                <div class="measurement">
+                  <div class="track">
+                    <div class="dotline"></div>
+                    <div class="shuttle-dot"></div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="box" id="black-hole">
+                <div class="black-hole-container">
+                  <div
+                    id="blackhole-root"
+                    aria-label="black hole 3D model"
+                  ></div>
+                </div>
+
+              </section>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <!-- phase 2 -->
-        <section class="astronaut-layer">
-       
-            <img
-              class="astronaut"
-              src="img/astronaut.png"
-              alt="Aaldert van Amerongen"
-              data-naam="Aaldert van Amerongen"
-              data-info="Dr. Van Amerongen is hoofd van het Earth Observation Programme bij SRON en leidt de ontwikkeling van nationale en internationale satellietprojecten gericht op klimaat, luchtkwaliteit en ecosystemen. Het programma ondersteunt wetenschap, beleid en industrie bij klimaatactie, met een sterke focus op broeikasgassen zoals methaan. Hij werkt samen met overheden en internationale organisaties, adviseert de Nederlandse overheid en draagt bij aan innovatieve Earth observation-technologieën. Sinds 2020 staat hij aan het hoofd van het programma."
-              data-img="img/astronaut.png"
-            />
-            <img
-              class="astronaut"
-              src="img/astronaut.png"
-              alt="Alex Simon"
-              data-naam="Alex Simon"
-              data-info="Hier komt de beschrijving van Alex."
-              data-img="img/alex.jpg"
-            />
-            <img
-              class="astronaut"
-              src="img/astronaut.png"
-              alt="Alexander Eigenraam"
-              data-naam="Alexander Eigenraam"
-              data-info="Hier komt de beschrijving van Alexander."
-              data-img="img/alexander.jpg"
-            />
-            <img
-              class="astronaut"
-              src="img/astronaut.png"
-              alt="Ana Isabel Lopez Noreña"
-              data-naam="Ana Isabel Lopez Noreña"
-              data-info="Hier komt de beschrijving van Ana Isabel."
-              data-img="img/ana.jpg"
-            />
+      <section class="mission">
+        <div class="text-mission">
+          <h5>01 <span></span> THE MISSION</h5>
+          <h4>Exploring how black holes consume matter</h4>
+          <span class="line"></span>
+          <p>
+            <span class="nebula">NEBULA-Xplorer</span> is a Dutch student-led satellite mission that explores some of the most extreme environments in the universe. The mission focuses on X-ray binaries—systems where a black hole or neutron star pulls in material from a nearby star. As this matter accelerates and heats up, it emits powerful X-ray radiation that reveals how these cosmic processes work.
+
+By observing these signals over long periods of time, <span class="nebula">NEBULA-Xplorer</span>  helps scientists understand how matter behaves under extreme gravity, how energy is released near black holes, and what this can tell us about the origins and evolution of the universe.
+
+Planned for launch around 2030, the project brings together students, researchers, and industry partners to design, build, and test a real scientific satellite—making it both a cutting-edge research mission and a unique educational experience.
+          </p>
+        </div>
+        <img src="img/earth.png" alt="earth" />
+      </section>
+      <section class="extra-info">
+        <ul>
+          <li>
+            <span>SCIENCE</span>
+            <h6>What we study</h6>
+            <p>
+              NEBULA-Xplorer  investigates X-ray binaries, including systems with black holes and neutron stars. By observing how matter behaves in these extreme environments, the mission helps researchers better understand accretion processes and cosmic variability.
+            </p>
+          </li>
+          <li>
+            <span>TECHNOLOGY</span>
+            <h6>How we observe</h6>
+            <p>
+              The mission uses a compact satellite with X-ray optics and detectors to capture high-energy signals from space. Its design allows for long-duration observations, helping scientists collect data over time instead of only in short moments.
+            </p>
+          </li>
+          <li>
+            <span>OIMPACT</span>
+            <h6>Why it matters</h6>
+            <p>
+              NEBULA-Xplorer  is not only a research mission, but also an educational one. Students, researchers, and industry partners work together to design, build, and test a real satellite, creating both scientific knowledge and future talent for the Dutch space sector.
+            </p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- phase 2 -->
+      <!------- MARK: begin astronaut
+    -->
+      <section class="astronaut-layer">
+        <h3 class="glass" id="team-title">Meet the team</h3>
+        <img
+          class="astronaut"
+          src="img/astronaut.png"
+          alt="Aaldert van Amerongen"
+          data-naam="Aaldert van Amerongen"
+          data-info="Dr. Van Amerongen is hoofd van het Earth Observation Programme bij SRON en leidt de ontwikkeling van nationale en internationale satellietprojecten gericht op klimaat, luchtkwaliteit en ecosystemen. Het programma ondersteunt wetenschap, beleid en industrie bij klimaatactie, met een sterke focus op broeikasgassen zoals methaan. Hij werkt samen met overheden en internationale organisaties, adviseert de Nederlandse overheid en draagt bij aan innovatieve Earth observation-technologieën. Sinds 2020 staat hij aan het hoofd van het programma."
+          data-img="./sronimg/Aaldertvan-amerongen.png"
+        />
+
+        <img
+          class="astronaut"
+          src="img/astronaut.png"
+          alt="Ana Isabel Lopez Noreña"
+          data-naam="Ana Isabel Lopez Noreña"
+          data-info="Ik heb een PhD in Science and Technology van de National University of Cuyo (Argentinië), met specialisatie in numerieke simulaties en luchtkwaliteitsanalyse. Mijn expertise ligt in het combineren van remote sensing, atmosferische modellen en machine learning om emissies beter te kwantificeren en klimaatmaatregelen te ondersteunen.
+
+Bij SRON werk ik met satellietdata (zoals TROPOMI) om methaanemissies uit o.a. steden, olie- en gasindustrie en stortplaatsen te detecteren en analyseren, en zo emissie-inventarissen en luchtkwaliteitsmonitoring te verbeteren.
+
+Daarnaast zet ik mij in om wetenschap toegankelijk en toepasbaar te maken, onder andere via communicatie, mentoring en samenwerkingen gericht op duurzaamheid en klimaatactie."
+          data-img="./sronimg/Ana-Isabel.png"
+        />
+        <img
+          class="astronaut"
+          src="img/astronaut.png"
+          alt="Andrew Barr"
+          data-naam="Andrew Barr"
+          data-info="Bij SRON ben ik verantwoordelijk voor de ontwikkeling en toepassing van het RemoTeC-algoritme, dat wordt gebruikt in verschillende satellietmissies (zoals Sentinel-5, TROPOMI en GOSAT) om wereldwijde concentraties van broeikasgassen te bepalen. Ik leid onder andere de bijdrage van SRON aan de ESA-missie Sentinel-5, met operationele algoritmes voor CO en CH₄, en werk aan innovatieve CO₂-dataproducten door satellietmetingen te combineren.
+
+Daarnaast ben ik betrokken bij de operationele verwerking van GOSAT-2 data en lever ik belangrijke datasets voor Europese programma’s zoals CAMS en C3S, zowel in near-real time als op jaarlijkse basis. Ook bereid ik toekomstige toepassingen voor met nieuwe missies zoals GOSAT-GW.
+
+Mijn achtergrond ligt in de astrofysica (PhD aan Leiden Observatory), waar ik via infraroodspectroscopie de chemische samenstelling van interstellaire wolken bestudeerde. Deze expertise pas ik nu toe op het analyseren van broeikasgassen in de aardatmosfeer om bij te dragen aan beter klimaatbegrip."
+          data-img="./sronimg/andrew_barr.png"
+        />
+        <img
+          class="astronaut"
+          src="img/astronaut.png"
+          alt="Aurora Simionescu"
+          data-naam="Aurora Simionescu"
+          data-info="Ik ben gespecialiseerd in het bestuderen van clusters van sterrenstelsels: de grootste structuren in het universum, bestaande uit duizenden sterrenstelsels, gas en donkere materie.
+
+Mijn onderzoek richt zich op röntgenspectroscopie van het hete plasma tussen deze sterrenstelsels. Daarmee bestudeer ik hoe elementen zoals zuurstof, silicium en ijzer ontstaan, zich verspreiden en het intergalactische medium verrijken — belangrijke bouwstenen voor planeten en leven.
+
+Daarnaast ben ik sinds 2024 principal investigator van de Nederlandse bijdrage aan de ESA-missie NewAthena, waarbij ik wetenschappelijke en technologische ontwikkelingen voor toekomstige röntgenastronomie samenbreng."
+          data-img="sronimg/Aurora-Simionescu.png"
+        />
+        <img
+          class="astronaut"
+          src="img/astronaut.png"
+          alt="Bastiaan van Diedenhoven"
+          data-naam="Bastiaan van Diedenhoven"
+          data-info="Ik werk aan het verbeteren van remote sensing van wolken en aerosolen om hun rol in weer en klimaat beter te begrijpen. Daarbij richt ik mij op eigenschappen zoals druppelgrootte, concentratie en samenstelling van wolken, en gebruik deze kennis om klimaat- en weermodellen te verbeteren. Ook onderzoek ik hoe aerosolen water opnemen en zo wolkenvorming en klimaat beïnvloeden.
+
+Daarnaast ben ik betrokken bij de ontwikkeling en inzet van SPEX-instrumenten. Als Principal Investigator leidde ik in 2024 de SPEX airborne metingen tijdens NASA’s PACE-PAX campagne en werk ik aan de volgende generatie (SPEXone-SG).
+
+Verder draag ik bij aan de Europese CO2M-missie door delen van een geavanceerde simulator te leiden en ESA te ondersteunen bij het evalueren van missieprestaties en vereisten voor het monitoren van CO₂-emissies."
+          data-img="./sronimg/Bastiaan-van-Diedenhoven.png"
+        />
+        <img
+          class="astronaut"
+          src="img/astronaut.png"
+          alt="Benjamin Ricketts"
+          data-naam="Benjamin Ricketts"
+          data-info="Ik werk aan reltrans, een complex model voor het analyseren van röntgenstraling rond zwarte gaten. Om dit model efficiënter te gebruiken, pas ik machine learning toe om berekeningen te versnellen en beter te vergelijken met observaties. Daarnaast verbeter en onderhoud ik de onderliggende code.
+
+Ook ben ik Principal Investigator van de NEBULA-Xplorer missie bij SRON, een educatief ruimteproject waarin studenten een echte satelliet ontwikkelen. Deze missie richt zich op langdurige observaties van röntgendubbelsterren om processen zoals accretie en jetvorming rond zwarte gaten beter te begrijpen."
+          data-img="./sronimg/Benjamin.png"
+        />
+        <img
+          class="astronaut"
+          src="img/astronaut.png"
+          alt="Berend J. Schut"
+          data-naam="Berend J. Schut"
+          data-info="Ik ben PhD-kandidaat bij SRON en verbonden aan de VU Amsterdam en GHGSat, met een achtergrond in Aerospace Engineering (TU Delft). Mijn promotieonderzoek richt zich op het detecteren van methaanemissies met behulp van satellietdata en machine learning.
+
+Ik ontwikkelde een geautomatiseerde detectiemethode voor methaan “super-emitters” in TROPOMI-data, waarmee wereldwijd duizenden grote emissiepluimen zijn geïdentificeerd. Deze methode wordt nu operationeel ingezet en levert wekelijkse updates voor monitoring en mitigatie van methaanuitstoot.
+
+Momenteel werk ik aan nieuwe toepassingen en combinaties van satellietdata en machine learning om methaanpluimen nog beter en nauwkeuriger te detecteren.
+"
+          data-img="/sronimg/Berend.png"
+        />
+
+        <img
+          class="astronaut"
+          src="img/astronaut.png"
+          alt="Claudia van Oostrum"
+          data-naam="Claudia van Oostrum"
+          data-info="Als Head of Communications bij SRON ben ik verantwoordelijk voor het overzien en aansturen van alle aspecten van de communicatiestrategie van SRON. Samen met het communicatieteam spelen we een belangrijke rol in hoe SRON communiceert met externe doelgroepen, zoals de media, wetenschappelijke instituten, partners en stakeholders, evenals met interne doelgroepen, zoals medewerkers en het management."
+          data-img="./sronimg/Claudia.png"
+        />
+        <img
+          class="astronaut"
+          src="img/astronaut.png"
+          alt="Dan Rooz"
+          data-naam="Dan Rooz"
+          data-info="Met een achtergrond in hoogfrequente toegepaste elektromagnetica ben ik gespecialiseerd in het ontwerpen van supergeleidende detectoren (MKIDs) voor astronomische toepassingen, met zeer hoge gevoeligheid voor zwakke kosmische signalen. Daarnaast heb ik expertise in quasi-optische systemen om detectorprestaties te optimaliseren.
+
+Bij SRON werk ik aan twee NASA-missies, POEMM en PRIMA, gericht op ver-infrarood observaties. Voor POEMM ontwikkel ik MKID-detectoren en draag ik bij aan hoge-resolutie spectroscopie voor het bestuderen van planeetvorming. Voor PRIMA ontwerp ik detectorarrays voor hyperspectrale beeldvorming, waarmee processen zoals stervorming en stofsamenstelling in verre sterrenstelsels onderzocht kunnen worden.
+"
+          data-img="/sronimg/Daan.png"
+        />
+        <img
+          class="astronaut"
+          src="img/astronaut.png"
+          alt="Damian Audley"
+          data-naam="Damian Audley"
+          data-info="Ik werk bij SRON als instrumentwetenschapper aan projecten zoals SAFARI en X-IFU en ben actief in de ondernemingsraad van SRON en NWO-I.
+
+Ik heb een bachelor en master in natuurkunde (Ierland) en een PhD van de University of Maryland, met onderzoek bij NASA naar röntgendubbelsterren.
+
+Mijn loopbaan omvatte rollen in Japan, het VK en Cambridge, waar ik werkte aan verschillende instrumentatieprojecten. Mijn onderzoek richt zich op detectoren, data-analyse, machine learning en astrofysische onderwerpen zoals röntgendubbelsterren, het interstellaire medium en de kosmische achtergrondstraling.
+"
+          data-img="img/Damian.png"
+        />
+        <img
+          class="astronaut"
+          src="img/astronaut.png"
+          alt="Daniela Perez Capelo"
+          data-naam="Daniela Perez Capelo"
+          data-info="In de cleanroom werk ik aan de fabricage van zeer nauwkeurige far-infrared detectorchips (KIDs), die essentieel zijn voor gevoelige telescopen en toekomstige NASA-missies zoals POEMM en PRIMA. Dit omvat het werken met geavanceerde technieken zoals depositie en lithografie in een gecontroleerde omgeving.
+
+Daarnaast ben ik betrokken bij de ontwikkeling van een ESA on-chip spectrometer, waarbij een complexe chip met meerdere materiaallagen wordt gebouwd. Dit vereist het oplossen van technische uitdagingen en het waarborgen van hoge kwaliteit, om zo geavanceerde instrumenten mogelijk te maken voor toekomstige astronomische observaties.
+"
+          data-img="./sronimg/Daniela.png"
+        />
+
+        <img
+          class="astronaut"
+          src="img/astronaut.png"
+          alt="David Doelman-Oldenburger"
+          data-naam="David Doelman-Oldenburger"
+          data-info="Als wetenschapper bij SRON werk ik aan optische technologie om exoplaneten direct te kunnen waarnemen en te bestuderen, met als doel te onderzoeken of er leven buiten de aarde bestaat.
+
+Ik ontwikkel coronagrafen op basis van vloeibare kristallen om het felle licht van sterren te onderdrukken, zodat zwakke exoplaneten zichtbaar worden. Binnen het SUPPPPRESS-project werk ik aan een innovatieve multi-grating methode om deze technologie te verbeteren, ondersteund door ESA.
+
+Daarnaast heb ik een NWO VENI-beurs ontvangen voor onderzoek naar de toepassing van deze optica, onder andere voor het bestuderen van schijven rond sterren waar planeten ontstaan. Ook ben ik betrokken bij de TOLIMAN-missie, gericht op het opsporen van exoplaneten rond nabije sterren.
+"
+          data-img="./sronimg/DavidDoelman.png"
+        />
+        <img
+          class="astronaut"
+          src="img/astronaut.png"
+          alt="Davide Vaccaro"
+          data-naam="Davide Vaccaro"
+          data-info="Als onderdeel van de Instrument Science Group werk ik mee aan de ontwikkeling van de Focal Plane Assembly voor de X-IFU-missie aan boord van ESA’s toekomstige NewAthena röntgenobservatorium. Mijn specifieke taak is het karakteriseren van de prestaties van het time-division multiplexing uitleessysteem, in samenwerking met NIST (VS), NASA Goddard Space Flight Center (VS) en APC (Frankrijk).
+
+Daarnaast leid ik bij SRON de activiteiten rond de bijdrage van TES-bolometers en frequency-domain multiplexing uitleessystemen voor de LiteBIRD-missie van JAXA.
+"
+          data-img="./sronimg/Davide.png"
+        />
+        <img
+          class="astronaut"
+          src="img/astronaut.png"
+          alt="Dirk Steenhuijsen"
+          data-naam="Dirk Steenhuijsen"
+          data-info="Profiel van Dirk Steenhuijsen."
+          data-img="img/astronaut.png"
+        />
+        <img
+          class="astronaut"
+          src="img/astronaut.png"
+          alt="Elise Costantini"
+          data-naam="Elise Costantini"
+          data-info="Profiel van Elise Costantini."
+          data-img="img/elisa.jpg"
+        />
+        <img
+          class="astronaut"
+          src="img/astronaut.png"
+          alt="Emanuele"
+          data-naam="Emanuele"
+          data-info="Profiel van Emanuele."
+          data-img="img/astronaut.png"
+        />
+        <img
+          class="astronaut"
+          src="img/astronaut.png"
+          alt="Erik Arenda"
+          data-naam="Erik Arenda"
+          data-info="Profiel van Erik Arenda."
+          data-img="img/astronaut.png"
+        />
+        <img
+          class="astronaut"
+          src="img/astronaut.png"
+          alt="Erik van der Meer"
+          data-naam="Erik van der Meer"
+          data-info="Profiel van Erik van der Meer."
+          data-img="img/astronaut.png"
+        />
+        <img
+          class="astronaut"
+          src="img/astronaut.png"
+          alt="Fiona Lippert"
+          data-naam="Fiona Lippert"
+          data-info="Profiel van Fiona Lippert."
+          data-img="img/fiona.png"
+        />
+        <img
+          class="astronaut"
+          src="img/astronaut.png"
+          alt="Floris van der Tak"
+          data-naam="Floris van der Tak"
+          data-info="Profiel van Floris van der Tak."
+          data-img="img/Floris.png"
+        />
+        <img
+          class="astronaut"
+          src="img/astronaut.png"
+          alt="Frank Uittenbosch"
+          data-naam="Frank Uittenbosch"
+          data-info="Profiel van Frank Uittenbosch."
+          data-img="img/astronaut.png"
+        />
+        <img
+          class="astronaut"
+          src="img/astronaut.png"
+          alt="Franz Zwart"
+          data-naam="Franz Zwart"
+          data-info="Profiel van Franz Zwart."
+          data-img="img/astronaut.png"
+        />
+
+        <div id="popup" class="popup verborgen">
+          <h3 id="popup-naam"></h3>
+          <div class="popup-inhoud">
+            <img id="popup-img" src="" alt="" />
+            <p id="popup-info"></p>
           </div>
+          <button class="button_sron" id="popup-sluit">Sluiten</button>
+        </div>
+      </section>
 
-          <div id="popup" class="popup verborgen">
-            <h3 id="popup-naam"></h3>
-            <div class="popup-inhoud">
-              <img id="popup-img" src="" alt="" />
-              <p id="popup-info"></p>
-            </div>
-            <button id="popup-sluit">Sluiten</button>
-        </section>
-      </main>
+      <section class="mission">
+        <div class="text-mission">
+          <h5>02<span></span>THE SATELLITE</h5>
+          <h4>Inside the <span class="nebula">NEBULA-Xplorer spacecraft</h4>
+          <span class="line"></span>
+          <p>
+            The NEBULA-Xplorer spacecraft is a compact scientific satellite designed to observe
+            high-energy X-ray radiation from extreme cosmic environments. It combines a specialized 
+            instrument with multiple supporting systems that enable it to operate in space, collect data, 
+            and communicate with Earth.
+
+            Each component on board has a specific function, from 
+            generating power and maintaining stability to capturing and processing 
+            scientific data. Together, these systems form a fully integrated platform 
+            designed for precise and long-duration observations.<br>
+            Explore the model below to discover how each part of the satellite works.
+          </p>
+        </div>
+        <img src="img/earth.png" alt="earth" />
+      </section>
+      <section id="module">
+        <div id="three-root"></div>
+        <div>
+          <div id="module-info">
+            <h5>01 <span></span> dolor sit amet</h5>
+            <h4>Lorem ipsum dolor sit amet</h4>
+            <span class="line"></span>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+              eiusmod tempor incididunt ut labore et dolore magna Lorem ipsum
+              dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+              incididunt ut labore et dolore magna Lorem ipsum dolor sit amet,
+              consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+              labore et dolore magna
+            </p>
+          </div>
+        </div>
+      </section>
+      <!------- MARK: eind astronaut
+          -->
     </main>
 
     <script src="scripts/script.js"></script>
+    <script type="module" src="scripts/3js.js"></script>
+    <script type="module" src="scripts/blackhole.js"></script>
   </body>
 </html>
