@@ -117,3 +117,4 @@ if (model && model.userData.ring) {
 	resize();
 	animate();
 }
+ 

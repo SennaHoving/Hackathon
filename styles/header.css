@@ -78,7 +78,7 @@ header nav ul li a:hover::after {
 
 @media (max-width: 768px) {
   header nav ul {
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: start;
     width: 70%;
@@ -99,6 +99,7 @@ header nav ul li a:hover::after {
   header nav ul.active {
     opacity: 1;
     transform: translateX(0);
+    display: flex;
   }
 
   #hamburger {
