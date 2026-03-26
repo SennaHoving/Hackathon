@@ -2,7 +2,12 @@ import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
+
 const mount = document.getElementById("blackhole-root");
+// Verwijder oude canvassen (voorkomt meerdere renders bij hot reload)
+if (mount) {
+	Array.from(mount.querySelectorAll('canvas')).forEach(c => c.remove());
+}
 
 if (mount) {
 	const scene = new THREE.Scene();
@@ -94,7 +99,7 @@ if (mount) {
 	function resize() {
 		const w = mount.clientWidth || 600;
 		const h = mount.clientHeight || w;
-renderer.setSize(w, h, false);
+		renderer.setSize(w, h, true); 
 		camera.aspect = w / h;
 		camera.updateProjectionMatrix();
 	}

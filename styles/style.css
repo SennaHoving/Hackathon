@@ -151,7 +151,7 @@ h3 ,h4 {
 }
 
 .astronaut-layer {
-    §display: flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     /* horizontale uitlijning */
@@ -238,6 +238,10 @@ h3 ,h4 {
 
     .popup img {
         max-width: 80%;
+    }
+
+    #popup {
+        display: none !important;
     }
 }
 
