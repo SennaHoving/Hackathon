@@ -33,23 +33,16 @@ h1 {
   color: #b0b8d0;
 }
 
-body {
-  margin: 0;
-  color: #fff;
-  font-family: sans-serif;
-}
-
-.scroll-spacer {
-  height: 20vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0.3;
-}
-
 .container {
   height: 1500vh;
   view-timeline-name: --section-scroll;
+}
+
+@media (max-width: 768px) {
+  .container {
+    height: 500vh;
+    margin-top: 500px;
+  }
 }
 
 .sticky-box {
@@ -229,6 +222,48 @@ body {
   }
 }
 
+@media (max-width: 768px) {
+  .track {
+    top: 40%;
+    bottom: 40%;
+    left: 50%;
+    right: auto;
+    width: 2px;
+    height: auto;
+    transform: translateX(-50%);
+  }
+
+  .dotline {
+    width: auto;
+    height: 100%;
+    border-top: none;
+    border-left: 3px dashed #bc2b2d50;
+    top: 0;
+    left: 0;
+  }
+
+  .shuttle-dot {
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation:
+      bounce-vertical 9s linear infinite,
+      shuttle 2s ease-in-out infinite;
+  }
+
+  @keyframes bounce-vertical {
+    0% {
+      top: 0%;
+    }
+    50% {
+      top: 100%;
+    }
+    100% {
+      top: 0%;
+    }
+  }
+}
+
 /* =========================================
    PULSE POINTS (Floating & Interactive)
    ========================================= */
@@ -405,7 +440,6 @@ h5 span {
   margin: 0 10px;
   opacity: 0.5;
 }
-
 
 p {
   color: white;
