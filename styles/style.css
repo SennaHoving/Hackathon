@@ -143,27 +143,6 @@ h3 ,h4 {
 
 
 /* button styling */
-.button_sron {
-    display: inline-block;
-    background-color: var(--accent-color);
-    color: var(--second-accent);
-    font-size: var(--p-font-size);
-    font-family: var(--font-para);
-    text-transform: uppercase;
-    padding: var(--button-sizing);
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    transition: 0.7s;
-    margin: var(--button-margin);
-}
-
-.button_sron:hover {
-    background-color: var(--second-accent);
-    color: var(--accent-color);
-    border-color: var(--accent-color);
-
-}
 
 .astronaut-layer {
     display: flex;
@@ -172,20 +151,6 @@ h3 ,h4 {
     /* horizontale uitlijning */
     gap: 2rem;
 
-}
-
-.astronaut-layer p {
-    font-family: var(--font-para);
-    font-size: var(--p-font-size);
-    hyphens: auto;
-    top: 220px;
-    width: 680px;
-    height: 350px;
-    overflow: scroll;
-
-    &::-webkit-scrollbar {
-        display: none;
-    }
 }
 
 .astronaut {
@@ -235,9 +200,6 @@ h3 ,h4 {
     transition: all 0.3s ease;
 }
 
-
-
-
 #popup-naam {
     font-family: var(--font-family2);
     color: #e85c34;
@@ -253,10 +215,6 @@ h3 ,h4 {
 
     .popup img {
         max-width: 80%;
-    }
-
-    #popup {
-        display: none !important;
     }
 }
 
