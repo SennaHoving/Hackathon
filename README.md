@@ -27,7 +27,3 @@ Youtube video scroll animation
 https://www.youtube.com/watch?v=pFtxR-O78sY
 pulse
 https://uiverse.io/Yaya12085/giant-shrimp-51
-
-         <p>
-           The <span class="nebula">NEBULA-Xplorer</span> is a compact satellite that observes high-energy X-rays from extreme cosmic environments. Its instruments and support systems handle power, stability, data collection, and communication. Together, they enable precise, long-duration observations.Explore the model below to see how each part works.
-          </p>
