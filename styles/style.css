@@ -40,6 +40,21 @@
 }
 
 
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+    background-image: url("/img/spacebackground.png");
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+
 @font-face {
     font-family: 'galactic';
     src: url('/fonts/Everyday\ Galactic\ Alphabet.otf') format('truetype');
@@ -151,7 +166,7 @@ h3 ,h4 {
 }
 
 .astronaut-layer {
-    §display: flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     /* horizontale uitlijning */
@@ -239,18 +254,9 @@ h3 ,h4 {
     .popup img {
         max-width: 80%;
     }
+
+    #popup {
+        display: none !important;
+    }
 }
 
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background-color: black;
-    background-image: url("/img/spacebackground.png");
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-}
