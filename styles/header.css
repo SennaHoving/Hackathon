@@ -97,6 +97,7 @@ header nav ul li a:hover::after {
   }
 
   header nav ul.active {
+    
     opacity: 1;
     transform: translateX(0);
   }
