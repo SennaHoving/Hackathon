@@ -29,3 +29,18 @@ pulse
 https://uiverse.io/Yaya12085/giant-shrimp-51
 
 earth https://www.freepik.com/free-psd/earth-ball-planet-isolated_316503704.htm#fromView=search&page=1&position=9&uuid=be28a142-1a97-4f02-9a2f-27095d9917a0&query=earth
+
+
+
+[Coolors](https://coolors.co) — kleurenpaletten kiezen  
+[Color Hunt](https://colorhunt.co) — kleurinspiratie  
+[CSS Gradient](https://cssgradient.io) — metallic kleurverlopen maken  
+[MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations/Using_CSS_animations) — uitleg over CSS‑animaties  
+CSS‑Tricks](https://css-tricks.com/css-gradient-text/) — gradient‑tekst
+[Design.dev Metallic Effect Generator](https://design.dev/tools/metallic-effect-generator/) — inspiratie voor metallic texturen in CSS  
+[Amit Merchant – Animated Gradient Text](https://www.amitmerchant.com/animated-gradient-effect-in-css/) — voorbeeld van bewegende gradienteffecten  
+[Rob O’Leary – Gradient Text Snippet](https://www.roboleary.net/snippets/gradient-text-css/) — technieken voor gradienttekst  
+CodePen Gold CSS Text Effect](https://codepen.io/mandymichael/pen/xpLNeV) — basisinspiratie voor metaalachtige gradienten  
+### Fonts
+Everyday Galactic Alphabet](https://www.dafont.com/everyday-galactic-alphabet.font)  
+Deltha Font](https://www.dafont.com/deltha.font)  
