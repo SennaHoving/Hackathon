@@ -392,12 +392,11 @@ h1 {
 }
 
 .mission {
-  padding: 20px;
+  padding: 6em 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  height: 100vh;
 }
 
 .mission img {
@@ -411,7 +410,7 @@ h1 {
   .mission {
     flex-direction: row;
     justify-content: center;
-    padding: 40px;
+    padding: 6em 40px;
     gap: 50px;
   }
 
@@ -535,17 +534,17 @@ p {
   .extra-info {
     padding: 0 50px;
   }
+
+  .extra-info ul {
+    flex-direction: column;
+    gap: 15px;
+  }
 }
 
 @media (max-width: 768px) {
   .extra-info {
     padding: 0 20px;
     flex-direction: column;
-  }
-
-  .extra-info ul {
-    flex-direction: column;
-    gap: 15px;
   }
 
   .extra-info li {
