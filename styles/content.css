@@ -95,6 +95,19 @@ h1 {
   object-fit: contain;
 }
 
+.spin {
+  animation: rotateLoop 40s linear infinite;
+}
+
+@keyframes rotateLoop {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 #mt {
   width: 0%;
   opacity: 0;
