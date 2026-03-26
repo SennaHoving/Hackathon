@@ -1,7 +1,9 @@
+/* astronaut.css - bevat alle astronaut gerelateerde styling */
 
 .astronaut-layer {
   position: relative;
   min-height: 100vh;
+  background: url("/img/spacebackground.png") center / cover no-repeat;
   overflow: hidden;
 }
 
@@ -12,7 +14,6 @@
   width: clamp(34px, 14vw, 64px);
   opacity: 0.95;
   will-change: transform;
-
   animation-name: flyAcross;
   animation-duration: var(--dur, 120s);
   animation-timing-function: linear;
@@ -42,7 +43,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-color: white;
+  color: white;
   padding: 1.5rem;
   border-radius: 10px;
   box-shadow: 0 8px 30px rgba(0,0,0,0.3);
@@ -65,4 +66,178 @@ color: white;
 
 .verborgen {
   display: none;
+}
+
+@media (min-width: 768px) {
+  .astronaut {
+    width: clamp(52px, 7vw, 110px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .astronaut {
+    animation: none;
+  }
+}
+
+/* Popup voor astronauten */
+.popup {
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    width: min(600px, 90vw);
+    text-align: center;
+    border-radius: 2px;
+    padding: 30px 36px;
+    background: rgba(10, 10, 20, 0.45);
+    backdrop-filter: blur(14px) saturate(180%);
+    -webkit-backdrop-filter: blur(14px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 40px 0 rgba(0, 0, 0, 0.85);
+    transition: opacity 0.3s ease;
+}
+
+.popup img {
+    width: clamp(150px, 40vw, 400px);
+    height: auto;
+    border-radius: 8px;
+    /* optioneel, voor nette afgeronde hoeken */
+    transition: all 0.3s ease;
+}
+
+#popup-naam {
+    font-family: var(--font-family2);
+    color: #e85c34;
+    font-size: var(--h3-font-size);
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .popup {
+        display: flex;
+        flex-direction: column;
+    }
+    .popup img {
+        max-width: 80%;
+    }
+}
+
+/* makes the span with this class a bolder fontsize */
+.boldspan {
+    font-family: 'spacemon-bold';
+    color: var(--second-color);
+}
+
+
+/* button styling */
+.button_sron {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--second-accent);
+    font-size: var(--p-font-size);
+    font-family: var(--font-para);
+    text-transform: uppercase;
+    padding: var(--button-sizing);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.7s;
+    margin: var(--button-margin);
+}
+
+.button_sron:hover {
+    background-color: var(--second-accent);
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+
+}
+
+.astronaut-layer {
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* horizontale uitlijning */
+    gap: 2rem;
+
+}
+
+.astronaut-layer p {
+    font-family: var(--font-para);
+    font-size: var(--p-font-size);
+    hyphens: auto;
+    top: 220px;
+    width: 680px;
+    height: 350px;
+    overflow: scroll;
+
+}
+
+.astronaut {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.astro-label {
+    color: var(--second-accent);
+    font-family: var(--font-family2);
+    font-size: var(--h3-font-size);
+    transition: 0.9s ease-in-out;
+    z-index: -0.1;
+}
+
+
+
+.popup {
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    width: min(600px, 90vw);
+    text-align: center;
+    border-radius: 2px;
+    padding: 30px 36px;
+    background: rgba(10, 10, 20, 0.45);
+    backdrop-filter: blur(14px) saturate(180%);
+    -webkit-backdrop-filter: blur(14px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 40px 0 rgba(0, 0, 0, 0.85);
+    transition: opacity 0.3s ease;
+
+
+}
+
+.popup img {
+    width: clamp(150px, 40vw, 400px);
+    height: auto;
+    border-radius: 8px;
+    /* optioneel, voor nette afgeronde hoeken */
+    transition: all 0.3s ease;
+}
+
+
+
+#popup-naam {
+    font-family: var(--font-family2);
+    color: #e85c34;
+    font-size: var(--h3-font-size);
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .popup {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .popup img {
+        max-width: 80%;
+    }
 }
