@@ -97,7 +97,7 @@ if (mount) {
 	);
 
 	function resize() {
-		const w = mount.clientWidth || 600;
+		const w = mount.clientWidth || 30;
 		const h = mount.clientHeight || w;
 		renderer.setSize(w, h, true); 
 		camera.aspect = w / h;
