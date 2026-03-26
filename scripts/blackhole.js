@@ -119,4 +119,3 @@ if (mount) {
   resize();
   animate();
 }
- 
