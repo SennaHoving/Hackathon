@@ -164,7 +164,6 @@ h4 {
   font-size: var(--p-font-size);
   hyphens: auto;
   top: 220px;
-  width: 680px;
   height: 350px;
   overflow: scroll;
 
@@ -233,9 +232,5 @@ h4 {
 
   .popup img {
     max-width: 80%;
-  }
-
-  #popup {
-    display: none !important;
   }
 }
