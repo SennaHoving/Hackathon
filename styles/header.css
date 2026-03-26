@@ -1,134 +1,132 @@
-html { scroll-behavior: smooth; }
-    * { padding: 0; margin: 0; box-sizing: border-box; font-family: sans-serif; }
+html {
+  scroll-behavior: smooth;
+}
  
-    body {
-      background: #111;
-      height: 200vh; /* demo scroll ruimte */
-    }
+* {
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+}
  
-    /* ── HEADER ── */
-    header {
-      z-index: 1000;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(4px);
-      padding: 16px 0;
-    }
+header nav {
+  display: flex;
+  align-items: center;
+}
+header {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 20px 0;
+}
  
-    /* ── NAV WRAPPER ── */
-    header nav {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      padding: 0 20px;
-    }
+header nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
  
-    /* ── LOGO ── */
-    #logo {
-      flex-shrink: 0;
-      margin-right: auto;
-    }
+header nav ul li {
+  margin: 0 15px;
+}
  
-    /* ── DESKTOP LINKS ── */
-    #nav-links {
-      display: flex;
-      align-items: center;
-      list-style: none;
-      gap: 0;
-    }
+header nav ul li a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.5s ease;
+  position: relative;
+}
  
-    #nav-links li {
-      margin: 0 15px;
-    }
+header nav ul li a:hover {
+  color: #eb5d34;
+}
  
-    #nav-links li a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      position: relative;
-      transition: color 0.3s ease;
-    }
+header nav ul li a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -5px;
+  left: 0;
+  background-color: #eb5d34;
+  transition: width 0.2s ease-in-out;
+}
  
-    #nav-links li a:hover {
-      color: #eb5d34;
-    }
+header nav ul li a:hover::after {
+  width: 100%;
+}
  
-    #nav-links li a::after {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 1px;
-      bottom: -5px;
-      left: 0;
-      background-color: #eb5d34;
-      transition: width 0.25s ease-in-out;
-    }
+#hamburger {
+  display: none;
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  #hamburger {
+    display: block;
+    background-color: none;
+    background: none;
+    border: none;
+  }
+  nav ul {
+    display: none;
+    flex-direction: column;
+  }
+  nav ul.active {
+    display: flex;
+  }
+}
  
-    #nav-links li a:hover::after {
-      width: 100%;
-    }
+@media (max-width: 768px) {
+  header nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 70%;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    padding: 20px 40px;
+    background-color: #eb5d34;
  
-    /* ── HAMBURGER ── */
-    #hamburger {
-      display: none;
-      cursor: pointer;
-      padding: 4px;
-      margin-left: auto;
-      background: none;
-      border: none;
-    }
+    opacity: 0;
+    transform: translateX(-100%);
+    transition:
+      transform 0.5s ease,
+      opacity 0.5s ease;
+    z-index: 999;
+  }
  
-    /* ── MOBILE ── */
-    @media (max-width: 768px) {
-      #hamburger {
-        display: block;
-      }
+  header nav ul.active {
+    opacity: 1;
+    transform: translateX(0);
+  }
  
-      #logo {
-        /* logo blijft zichtbaar op mobile */
-        display: block;
-      }
+  #hamburger {
+    display: block;
+    padding-left: 20px;
+  }
  
-      #nav-links {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0;
+  header nav ul li {
+    margin: 15px 0;
+    text-align: center;
+  }
+  header nav ul li a {
+    font-size: 24px;
+  }
+  #logo {
+    display: none;
+  }
+}
  
-        position: fixed;
-        top: 62px;          /* hoogte van de header */
-        left: 0;
-        width: 70%;
-        padding: 24px 40px 32px;
-        background-color: #eb5d34;
+#logo {
+  margin-right: auto;
+  margin-left: 20px;
+}
  
-        transform: translateX(-100%);
-        opacity: 0;
-        transition: transform 0.4s ease, opacity 0.4s ease;
-        z-index: 999;
-      }
  
-      #nav-links.active {
-        transform: translateX(0);
-        opacity: 1;
-      }
- 
-      #nav-links li {
-        margin: 14px 0;
-      }
- 
-      #nav-links li a {
-        font-size: 22px;
-        color: #fff;
-      }
- 
-      #nav-links li a::after {
-        background-color: #fff;
-      }
- 
-      #nav-links li a:hover {
-        color: rgba(255,255,255,0.75);
-      }
-    }
