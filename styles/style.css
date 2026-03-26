@@ -40,6 +40,21 @@
 }
 
 
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+    background-image: url("/img/spacebackground.png");
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+
 @font-face {
     font-family: 'galactic';
     src: url('/fonts/Everyday\ Galactic\ Alphabet.otf') format('truetype');
@@ -245,16 +260,3 @@ h3 ,h4 {
     }
 }
 
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background-color: black;
-    background-image: url("/img/spacebackground.png");
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-}
