@@ -1,10 +1,4 @@
-const hamburger = document.getElementById("hamburger");
-const navLinks = document.getElementById("nav-links");
-
-hamburger.addEventListener("click", () => {
-  navLinks.classList.toggle("active");
-});
-
+  const hamburger = document.getElementById('hamburger');  const navLinks  = document.getElementById('nav-links');  hamburger.addEventListener('click', () => {    const isOpen = navLinks.classList.toggle('active');    hamburger.setAttribute('aria-expanded', isOpen);  });  navLinks.querySelectorAll('a').forEach(link => {    link.addEventListener('click', () => {      navLinks.classList.remove('active');      hamburger.setAttribute('aria-expanded', 'false');    });  });
 // dit geeft de H1 alle letter een span zodat het 1 vvor 1 de letters verandere
 document.querySelectorAll('.morph-text').forEach(el => {
   const text = el.textContent;
