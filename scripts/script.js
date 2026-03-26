@@ -74,19 +74,25 @@ document.addEventListener("DOMContentLoaded", setupAstronauts);
 window.onload = animateAstronauts;
 
 
-// this helps with the hover of the astronauts
+const title = document.getElementById('team-title');
+
 document.querySelectorAll('.astronaut').forEach(img => {
   img.addEventListener('mouseenter', () => {
-    const label = document.createElement('div');
-    label.classList.add('astro-label');
-    label.textContent = img.dataset.naam;
-    img.parentElement.appendChild(label);
+    title.style.opacity = 0;
+    setTimeout(() => {
+      title.textContent = img.dataset.naam;
+      title.style.opacity = 1;
+    }, 150);
   });
+
   img.addEventListener('mouseleave', () => {
-    document.querySelector('.astro-label')?.remove();
+    title.style.opacity = 0;
+    setTimeout(() => {
+      title.textContent = "Meet the team";
+      title.style.opacity = 1;
+    }, 150);
   });
 });
-
 
 
 

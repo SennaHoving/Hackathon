@@ -94,7 +94,7 @@ if (mount) {
 	function resize() {
 		const w = mount.clientWidth || 600;
 		const h = mount.clientHeight || w;
-		renderer.setSize(w, h, false);
+renderer.setSize(w, h, false);
 		camera.aspect = w / h;
 		camera.updateProjectionMatrix();
 	}

@@ -10,10 +10,11 @@
     --h1-font-size: clamp(1.875rem, -1.875rem + 10vw, 3.75rem);
 
     --h3-font-size: clamp(1rem, 0.5rem + 2vw, 1.75rem);
+    --h4-font-size: clamp(0.7rem, 0.5rem + 2vw, 1.65rem);
 
     --button-sizing: clamp(0.3rem, 0.3rem + 0.6vw, 0.9rem);
     --button-text: clamp(2rem, 0.875rem + 0.6667vw, 1.25rem);
-    --p-font-size: clamp(1rem, 0.875rem + 0.6667vw, 1.25rem);
+    --p-font-size: clamp(1rem, 0.875rem + 0.6667vw, 0.6rem);
 
     --pop-font-size: clamp(0.4rem, 0.875rem + 0.6667vw, 0.6rem);
 
@@ -33,6 +34,9 @@
             #ffd2b3 68%,
             #b33b1e 85%,
             #3a1203 100%);
+
+
+            
 }
 
 
@@ -64,6 +68,18 @@
 body{
     background-image: url(/img/spacebackground.png);
 }
+
+.glass {
+    border-radius: 2px;
+    padding: 30px 36px;
+    background: rgba(10, 10, 20, 0.45);
+    backdrop-filter: blur(14px) saturate(180%);
+    -webkit-backdrop-filter: blur(14px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 40px 0 rgba(0, 0, 0, 0.85);
+    transition: opacity 0.3s ease;
+  }
 /* Styling fonts  */
 
 h1 span {
@@ -77,23 +93,29 @@ h1 span {
     background-clip: text;
 }
 
-
-
 @keyframes switchFont {
     100% {
         font-family: var(--font-family2);
     }
 }
 
-
-
-.text-p1 p {
+p{
     font-family: var(--font-para);
-    font-size: var(--p-font-size);
     color: var(--second-accent);
+    font-size: var(--p-font-size);
+
 }
 
-.text-p1 p span:first-of-type {
+h3 ,h4 {
+    font-family: var(--font-para);
+    color: var(--second-accent);
+    font-size: var(--h4-font-size);
+}
+
+
+
+/* gives every span with the class nebula blue color and the same font */
+.nebula {
     font-family: var(--font-family2);
     color: var(--second-color);
 }
@@ -129,9 +151,7 @@ h1 span {
 }
 
 .astronaut-layer {
-
-
-    display: flex;
+    §display: flex;
     align-items: center;
     justify-content: center;
     /* horizontale uitlijning */
@@ -161,14 +181,18 @@ h1 span {
     gap: 2rem;
 }
 
-.astro-label {
+#team-title {
     color: var(--second-accent);
     font-family: var(--font-family2);
     font-size: var(--h3-font-size);
-    transition: 0.9s ease-in-out;
-    z-index: -0.1;
+    z-index: 1;
+    transition: 0.3s ease-in-out;
+    
 }
 
+#team-title:hover {
+    letter-spacing: 2px;
+}
 
 
 .popup {
@@ -187,17 +211,15 @@ h1 span {
     border-top: 1px solid rgba(255, 255, 255, 0.25);
     box-shadow: 0 8px 40px 0 rgba(0, 0, 0, 0.85);
     transition: opacity 0.3s ease;
-
-
 }
 
 .popup img {
     width: clamp(150px, 40vw, 400px);
     height: auto;
     border-radius: 8px;
-    /* optioneel, voor nette afgeronde hoeken */
     transition: all 0.3s ease;
 }
+
 
 
 

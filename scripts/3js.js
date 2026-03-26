@@ -10,7 +10,6 @@ if (!mount) throw new Error("Geen #three-root of #module gevonden.");
 let cameraTargetPos = null;
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2(); 
-const textPanel = document.getElementById("module-info"); 
 
 // Scene
 const scene = new THREE.Scene();
@@ -147,10 +146,10 @@ window.addEventListener("pointermove", (event) => {
 // Onclick camera move
 const cameraTargets = {
     "Solar Panel": new THREE.Vector3(5, 0, 5),
-    "X-ray instrument": new THREE.Vector3(0, 5, 4), 
-    "Separation plane": new THREE.Vector3(5, 0, -4),
-    "S-band antennas": new THREE.Vector3(0, -2, 4),
-    "Star tracker": new THREE.Vector3(0, 2, 3), 
+    "X-ray instrument": new THREE.Vector3(0, 5, 5), 
+    "Separation plane": new THREE.Vector3(5, 0, -5),
+    "S-band antennas": new THREE.Vector3(0, -2, 5),
+    "Star tracker": new THREE.Vector3(0, 2, 5), 
 };
 
 function onClick() {
@@ -159,6 +158,12 @@ function onClick() {
     const targetPos = cameraTargets[hovered.name];
     if(!targetPos) return; 
 
+    const moduleSection = document.getElementById("module"); 
+    const textPanel = document.getElementById("module-info"); 
+
+    moduleSection.classList.add("info");
+    resizeRenderer();
+    
     textPanel.style.display = "flex"; 
     textPanel.querySelector("h4").innerText = hovered.name;
     textPanel.querySelector("h5").innerText = hovered.number;
