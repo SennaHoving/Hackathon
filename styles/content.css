@@ -33,23 +33,16 @@ h1 {
   color: #b0b8d0;
 }
 
-body {
-  margin: 0;
-  color: #fff;
-  font-family: sans-serif;
-}
-
-.scroll-spacer {
-  height: 20vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0.3;
-}
-
 .container {
   height: 1500vh;
   view-timeline-name: --section-scroll;
+}
+
+@media (max-width: 768px) {
+  .container {
+    height: 500vh;
+    margin-top: 500px;
+  }
 }
 
 .sticky-box {
@@ -100,6 +93,19 @@ body {
   width: 80%;
   height: 80%;
   object-fit: contain;
+}
+
+.spin {
+  animation: rotateLoop 40s linear infinite;
+}
+
+@keyframes rotateLoop {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 #mt {
@@ -226,6 +232,48 @@ body {
   }
   100% {
     left: 0%;
+  }
+}
+
+@media (max-width: 768px) {
+  .track {
+    top: 40%;
+    bottom: 40%;
+    left: 50%;
+    right: auto;
+    width: 2px;
+    height: auto;
+    transform: translateX(-50%);
+  }
+
+  .dotline {
+    width: auto;
+    height: 100%;
+    border-top: none;
+    border-left: 3px dashed #bc2b2d50;
+    top: 0;
+    left: 0;
+  }
+
+  .shuttle-dot {
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation:
+      bounce-vertical 9s linear infinite,
+      shuttle 2s ease-in-out infinite;
+  }
+
+  @keyframes bounce-vertical {
+    0% {
+      top: 0%;
+    }
+    50% {
+      top: 100%;
+    }
+    100% {
+      top: 0%;
+    }
   }
 }
 
@@ -357,12 +405,11 @@ body {
 }
 
 .mission {
-  padding: 20px;
+  padding: 6em 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  height: 100vh;
 }
 
 .mission img {
@@ -376,7 +423,7 @@ body {
   .mission {
     flex-direction: row;
     justify-content: center;
-    padding: 40px;
+    padding: 6em 40px;
     gap: 50px;
   }
 
@@ -406,7 +453,6 @@ h5 span {
   margin: 0 10px;
   opacity: 0.5;
 }
-
 
 p {
   color: white;
@@ -454,8 +500,13 @@ p {
   gap: 10px;
   padding: 40px;
   border-radius: 4px;
-  border: 1px solid rgba(0, 217, 255, 0.3);
-  background: rgba(10, 20, 30, 0.7);
+  background: rgba(10, 10, 20, 0.45);
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  border: 1px solid (255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 40px 0 rgba(0, 0, 0, 0.85);
+  transition: opacity 0.3s ease;
 }
 
 .extra-info li h6 {
@@ -501,17 +552,17 @@ p {
   .extra-info {
     padding: 0 50px;
   }
+
+  .extra-info ul {
+    flex-direction: column;
+    gap: 15px;
+  }
 }
 
 @media (max-width: 768px) {
   .extra-info {
     padding: 0 20px;
     flex-direction: column;
-  }
-
-  .extra-info ul {
-    flex-direction: column;
-    gap: 15px;
   }
 
   .extra-info li {

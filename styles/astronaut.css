@@ -52,16 +52,23 @@
 }
 
 .popup-inhoud {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
   padding-top: 1rem;
-  gap: 2rem;
+  gap: 1rem;
   line-height: 1.8em;
+  width: 100%;
 }
 
 .popup-inhoud img {
-  width: 250px;
+  width: auto;
   height: 250px;
   object-fit: cover;
+  grid-column: 1 / 2;
+}
+
+.popup-info {
+    grid-column: 2 / 3;
 }
 
 .verborgen {
@@ -81,7 +88,7 @@
 }
 
 /* Popup voor astronauten */
-.popup {
+/* .popup {
     top: 70px;
     left: 50%;
     transform: translateX(-50%);
@@ -97,11 +104,11 @@
     border-top: 1px solid rgba(255, 255, 255, 0.25);
     box-shadow: 0 8px 40px 0 rgba(0, 0, 0, 0.85);
     transition: opacity 0.3s ease;
-}
+} */
 
 .popup img {
-    width: clamp(150px, 40vw, 400px);
-    height: auto;
+    /* width: clamp(150px, 40vw, 400px); */
+    /* height: auto; */
     border-radius: 8px;
     /* optioneel, voor nette afgeronde hoeken */
     transition: all 0.3s ease;
@@ -114,9 +121,25 @@
     margin-top: 0.5rem;
 }
 
+@media (max-width: 1024px ) {
+    .popup-inhoud {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr auto;
+    }
+
+    .popup-inhoud img {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+    }
+
+    .popup-info {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+    }
+}
+
 @media (max-width: 768px) {
     .popup {
-        display: flex;
         flex-direction: column;
     }
     .popup img {
@@ -155,8 +178,6 @@
 }
 
 .astronaut-layer {
-
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -170,10 +191,12 @@
     font-size: var(--p-font-size);
     hyphens: auto;
     top: 220px;
-    width: 680px;
     height: 350px;
     overflow: scroll;
 
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 .astronaut {
@@ -192,52 +215,9 @@
     z-index: -0.1;
 }
 
-
-
-.popup {
-    top: 70px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-    width: min(600px, 90vw);
-    text-align: center;
-    border-radius: 2px;
-    padding: 30px 36px;
-    background: rgba(10, 10, 20, 0.45);
-    backdrop-filter: blur(14px) saturate(180%);
-    -webkit-backdrop-filter: blur(14px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-top: 1px solid rgba(255, 255, 255, 0.25);
-    box-shadow: 0 8px 40px 0 rgba(0, 0, 0, 0.85);
-    transition: opacity 0.3s ease;
-
-
-}
-
-.popup img {
-    width: clamp(150px, 40vw, 400px);
-    height: auto;
-    border-radius: 8px;
-    /* optioneel, voor nette afgeronde hoeken */
-    transition: all 0.3s ease;
-}
-
-
-
 #popup-naam {
     font-family: var(--font-family2);
     color: #e85c34;
     font-size: var(--h3-font-size);
     margin-top: 0.5rem;
-}
-
-@media (max-width: 768px) {
-    .popup {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .popup img {
-        max-width: 80%;
-    }
 }
