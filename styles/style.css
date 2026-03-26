@@ -1,220 +1,241 @@
 :root {
+  --font-family1: "galactic";
+  --font-family2: "Deltha";
+  --font-para: "spacemono";
+  --science-info: "opensans";
 
-    --font-family1: 'galactic';
-    --font-family2: 'Deltha';
-    --font-para: 'spacemono';
-    --science-info: 'opensans';
+  --button-margin: clamp(0.5rem, 1vw + 0.5rem, 3rem);
 
-    --button-margin: clamp(0.5rem, 1vw + 0.5rem, 3rem);
+  --h1-font-size: clamp(1.875rem, -1.875rem + 10vw, 3.75rem);
 
-    --h1-font-size: clamp(1.875rem, -1.875rem + 10vw, 3.75rem);
+  --h3-font-size: clamp(1rem, 0.5rem + 2vw, 1.75rem);
+  --h4-font-size: clamp(0.7rem, 0.5rem + 2vw, 1.65rem);
 
-    --h3-font-size: clamp(1rem, 0.5rem + 2vw, 1.75rem);
-    --h4-font-size: clamp(0.7rem, 0.5rem + 2vw, 1.65rem);
+  --button-sizing: clamp(0.3rem, 0.3rem + 0.6vw, 0.9rem);
+  --button-text: clamp(2rem, 0.875rem + 0.6667vw, 1.25rem);
+  --p-font-size: clamp(1rem, 0.875rem + 0.6667vw, 0.6rem);
 
-    --button-sizing: clamp(0.3rem, 0.3rem + 0.6vw, 0.9rem);
-    --button-text: clamp(2rem, 0.875rem + 0.6667vw, 1.25rem);
-    --p-font-size: clamp(1rem, 0.875rem + 0.6667vw, 0.6rem);
+  --pop-font-size: clamp(0.4rem, 0.875rem + 0.6667vw, 0.6rem);
 
-    --pop-font-size: clamp(0.4rem, 0.875rem + 0.6667vw, 0.6rem);
+  --h1-spacing: clamp(1rem, 0.5rem + 2vw, 3rem);
 
-    --h1-spacing: clamp(1rem, 0.5rem + 2vw, 3rem);
+  --main-color: #004472;
+  --accent-color: #181934;
+  --second-accent: #eb5d34;
+  --second-color: #90c2e0;
+  --third-color: #c7e0db;
 
-    --main-color: #004472;
-    --accent-color: #181934;
-    --second-accent: #EB5D34;
-    --second-color: #90C2E0;
-    --third-color: #C7E0DB;
-
-    --metallic-gradient: linear-gradient(145deg,
-            #7a2b13 0%,
-            #c64722 18%,
-            var(--second-accent) 38%,
-            #ff824d 55%,
-            #ffd2b3 68%,
-            #b33b1e 85%,
-            #3a1203 100%);
-
-
-            
+  --metallic-gradient: linear-gradient(
+    145deg,
+    #7a2b13 0%,
+    #c64722 18%,
+    var(--second-accent) 38%,
+    #ff824d 55%,
+    #ffd2b3 68%,
+    #b33b1e 85%,
+    #3a1203 100%
+  );
 }
 
-
-
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: black;
-    background-image: url("/img/spacebackground.png");
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-}
-
-
-@font-face {
-    font-family: 'galactic';
-    src: url('/fonts/Everyday\ Galactic\ Alphabet.otf') format('truetype');
-
+  background-color: black;
+  background-image: url("/img/spacebackground.png");
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 @font-face {
-    font-family: 'Deltha';
-    src: url('/fonts/Deltha.ttf') format('truetype');
-
+  font-family: "galactic";
+  src: url("/fonts/Everyday\ Galactic\ Alphabet.otf") format("truetype");
 }
 
 @font-face {
-    font-family: 'spacemono';
-    src: url('/fonts/SpaceMono-Regular.ttf') format('truetype');
-
+  font-family: "Deltha";
+  src: url("/fonts/Deltha.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: 'spacemon-bold';
-    src: url('/fonts/SpaceMono-Bold.ttf') format('truetype');
-
+  font-family: "spacemono";
+  src: url("/fonts/SpaceMono-Regular.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "spacemon-bold";
+  src: url("/fonts/SpaceMono-Bold.ttf") format("truetype");
+}
 
-body{
-    background-image: url(/img/spacebackground.png);
+body {
+  background-image: url(/img/spacebackground.png);
 }
 
 .glass {
-    border-radius: 2px;
-    padding: 30px 36px;
-    background: rgba(10, 10, 20, 0.45);
-    backdrop-filter: blur(14px) saturate(180%);
-    -webkit-backdrop-filter: blur(14px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-top: 1px solid rgba(255, 255, 255, 0.25);
-    box-shadow: 0 8px 40px 0 rgba(0, 0, 0, 0.85);
-    transition: opacity 0.3s ease;
-  }
+  border-radius: 2px;
+  padding: 30px 36px;
+  background: rgba(10, 10, 20, 0.45);
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 40px 0 rgba(0, 0, 0, 0.85);
+  transition: opacity 0.3s ease;
+}
 /* Styling fonts  */
 
 h1 span {
-    font-size: var(--h1-font-size);
-    font-family: var(--font-family1);
-    animation: switchFont 0.4s steps(3) forwards;
-    animation-delay: calc(var(--i) * 0.15s);
-    background: var(--metallic-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  font-size: var(--h1-font-size);
+  font-family: var(--font-family1);
+  animation: switchFont 0.4s steps(3) forwards;
+  animation-delay: calc(var(--i) * 0.15s);
+  background: var(--metallic-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 @keyframes switchFont {
-    100% {
-        font-family: var(--font-family2);
-    }
+  100% {
+    font-family: var(--font-family2);
+  }
 }
 
-p{
-    font-family: var(--font-para);
-    color: var(--second-accent);
-    font-size: var(--p-font-size);
-
+p {
+  font-family: var(--font-para);
+  color: var(--second-accent);
+  font-size: var(--p-font-size);
 }
 
-h3 ,h4 {
-    font-family: var(--font-para);
-    color: var(--second-accent);
-    font-size: var(--h4-font-size);
+h3,
+h4 {
+  font-family: var(--font-para);
+  color: var(--second-accent);
+  font-size: var(--h4-font-size);
 }
-
-
 
 /* gives every span with the class nebula blue color and the same font */
 .nebula {
-    font-family: var(--font-family2);
-    color: var(--second-color);
+  font-family: var(--font-family2);
+  color: var(--second-color);
 }
 
 /* makes the span with this class a bolder fontsize */
 .boldspan {
-    font-family: 'spacemon-bold';
-    color: var(--second-color);
+  font-family: "spacemon-bold";
+  color: var(--second-color);
 }
 
-
 /* button styling */
+.button_sron {
+  display: inline-block;
+  background-color: var(--accent-color);
+  color: var(--second-accent);
+  font-size: var(--p-font-size);
+  font-family: var(--font-para);
+  text-transform: uppercase;
+  padding: var(--button-sizing);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.7s;
+  margin: var(--button-margin);
+}
+
+.button_sron:hover {
+  background-color: var(--second-accent);
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+}
 
 .astronaut-layer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* horizontale uitlijning */
-    gap: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* horizontale uitlijning */
+  gap: 2rem;
+}
 
+.astronaut-layer p {
+  font-family: var(--font-para);
+  font-size: var(--p-font-size);
+  hyphens: auto;
+  top: 220px;
+  width: 680px;
+  height: 350px;
+  overflow: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .astronaut {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
 }
 
 #team-title {
-    color: var(--second-accent);
-    font-family: var(--font-family2);
-    font-size: var(--h3-font-size);
-    z-index: 1;
-    transition: 0.3s ease-in-out;
-    
+  color: var(--second-accent);
+  font-family: var(--font-family2);
+  font-size: var(--h3-font-size);
+  z-index: 1;
+  transition: 0.3s ease-in-out;
 }
 
 #team-title:hover {
-    letter-spacing: 2px;
+  letter-spacing: 2px;
 }
 
-
 .popup {
-    top: 70px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-    width: min(600px, 90vw);
-    text-align: center;
-    border-radius: 2px;
-    padding: 30px 36px;
-    background: rgba(10, 10, 20, 0.45);
-    backdrop-filter: blur(14px) saturate(180%);
-    -webkit-backdrop-filter: blur(14px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-top: 1px solid rgba(255, 255, 255, 0.25);
-    box-shadow: 0 8px 40px 0 rgba(0, 0, 0, 0.85);
-    transition: opacity 0.3s ease;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  width: min(600px, 90vw);
+  text-align: center;
+  border-radius: 2px;
+  padding: 30px 36px;
+  background: rgba(10, 10, 20, 0.45);
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 40px 0 rgba(0, 0, 0, 0.85);
+  transition: opacity 0.3s ease;
 }
 
 .popup img {
-    width: clamp(150px, 40vw, 400px);
-    height: auto;
-    border-radius: 8px;
-    transition: all 0.3s ease;
+  width: clamp(150px, 40vw, 400px);
+  height: auto;
+  border-radius: 8px;
+  transition: all 0.3s ease;
 }
 
 #popup-naam {
-    font-family: var(--font-family2);
-    color: #e85c34;
-    font-size: var(--h3-font-size);
-    margin-top: 0.5rem;
+  font-family: var(--font-family2);
+  color: #e85c34;
+  font-size: var(--h3-font-size);
+  margin-top: 0.5rem;
 }
 
 @media (max-width: 768px) {
-    .popup {
-        display: flex;
-        flex-direction: column;
-    }
+  .popup {
+    display: flex;
+    flex-direction: column;
+  }
 
-    .popup img {
-        max-width: 80%;
-    }
+  .popup img {
+    max-width: 80%;
+  }
+
+  #popup {
+    display: none !important;
+  }
 }
-
